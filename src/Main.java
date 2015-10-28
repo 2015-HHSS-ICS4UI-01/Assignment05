@@ -16,17 +16,12 @@ public class Main {
         
         OrderedList orderedList = new OrderedList();
 
-        
-//        orderedList.add(1);
-//        orderedList.add(1);
-//        orderedList.add(0);
-//        orderedList.add(0);
-//        orderedList.add(0);
-//        orderedList.add(-2);
-//        orderedList.add(7);
-//        orderedList.add(5);
-        
-        orderedList.print();
+        orderedList.add(1);
+        orderedList.add(1);
+        orderedList.add(2);
+        orderedList.add(0);
+        orderedList.add(1);
+        orderedList.remove(1);
         
     }
 }

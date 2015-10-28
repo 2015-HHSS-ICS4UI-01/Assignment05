@@ -8,7 +8,7 @@
  * @author kobed6328
  */
 public class Node {
-    private int value;
+    private final int value;
     private Node childNode;
     
     public Node(int value)
@@ -24,7 +24,6 @@ public class Node {
     {
         return childNode;
     }
-    
     public int getValue()
     {
         return value;
