@@ -15,6 +15,8 @@ public class Test {
     public static void main(String[] args) {
         MyOrderedList list = new MyOrderedList();
         list.add(7);
+        list.add(10);
+        list.add(20);
         list.printList();
     }
 }

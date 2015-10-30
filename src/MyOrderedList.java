@@ -19,7 +19,7 @@ public class MyOrderedList {
         numItems = 0;
     }
     
-    /**
+     /**
      * Add the node to the beginning of the list.
      * @param n the node to add
      */
@@ -30,26 +30,41 @@ public class MyOrderedList {
     }
     
     /**
-     * Add a Node to the List based off its value.
-     * @param num The number held by the Node.
+     * Adds a node at a specific index.
+     * @param index the position to place the node
+     * @param n the node to add
      */
     public void add(int num){
-        if(isEmpty()){
+        //adding to an empty list
+        if(numItems == 0){
             add(new Node(num));
-        }else if(!isEmpty()){
-            if(numItems == 1){
-                
+        }else if(numItems == 1){
+            if(getInt(head.getNum()) > num){
+                Node temp = head;
+                head = new Node(num);
+                head.setNext(temp);
+            }else if(getInt(head.getNum()) < num){
+                Node temp = head;
+                head.setNext(temp);
             }
-            
-            
-            numItems++;  
         }else{
             Node current = head;
             for(int i = 0; i < numItems - 1; i++){
-                current = current.getNext();
+               if(getInt(current.getNext().getNum()) > num || current.getNext() == null && 
+                       getInt(current.getPrev().getNum()) < num || current.getPrev() == null){
+                   Node temp = current;
+                   current = new Node(num);
+                   current.setNext(temp);
+                   break;
+               }
+               current = current.getNext(); 
             }
-        }
-        
+               
+            //we've added a number
+            
+            numItems++; 
+        }  
+            
     }
     
     /**
