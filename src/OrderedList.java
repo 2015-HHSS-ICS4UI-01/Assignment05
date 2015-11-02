@@ -17,7 +17,8 @@ public class OrderedList {
     public OrderedList() {
         head = null;
         numItems = 0;
-    }
+    } 
+    
 
     /**
      * Add node to beginning to the list
