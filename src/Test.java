@@ -16,7 +16,8 @@ public class Test {
         MyOrderedList list = new MyOrderedList();
         list.add(7);
         list.add(10);
-        list.add(20);
+        list.add(12);
+        //System.out.println(list.get(0));
         list.printList();
     }
 }

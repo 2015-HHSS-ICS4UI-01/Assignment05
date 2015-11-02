@@ -39,31 +39,37 @@ public class MyOrderedList {
         if(numItems == 0){
             add(new Node(num));
         }else if(numItems == 1){
-            if(getInt(head.getNum()) > num){
+            if(head.getNum() > num){
                 Node temp = head;
                 head = new Node(num);
                 head.setNext(temp);
-            }else if(getInt(head.getNum()) < num){
-                Node temp = head;
-                head.setNext(temp);
+                temp.setPrev(head);
+            }else if(head.getNum() < num){
+                Node n = new Node(num);
+                head.setNext(n);
+                n.setPrev(head);
             }
-        }else{
-            Node current = head;
-            for(int i = 0; i < numItems - 1; i++){
-               if(getInt(current.getNext().getNum()) > num || current.getNext() == null && 
-                       getInt(current.getPrev().getNum()) < num || current.getPrev() == null){
-                   Node temp = current;
-                   current = new Node(num);
-                   current.setNext(temp);
-                   break;
-               }
-               current = current.getNext(); 
-            }
-               
-            //we've added a number
             
+            numItems++;
+            
+        }else{
+            int index = 0;
+            Node current = head;
+            while(index < numItems - 1){
+                if(current.getNum() > num){
+                   break;
+                }             
+                current = current.getNext(); 
+            }
+            
+            Node n = new Node(num);
+            n.setNext(current);
+            n.setPrev(current.getPrev());
+            current.setPrev(n);
+            
+            //we've added a number
             numItems++; 
-        }  
+        }   
             
     }
     
@@ -116,7 +122,7 @@ public class MyOrderedList {
      * @param index the position of the Node to check.
      * @return the value of the Node.
      */
-    public int getInt(int index){
+    public int get(int index){
         Node n = head;
         for(int i = 0; i < index; i++){
             n = n.getNext();
