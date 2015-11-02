@@ -17,8 +17,8 @@ public class Main {
         ADTList list = new ADTList();
         list.add(0, 1);
         list.add(1, 2);
-        list.add(9, 2);
-        list.add(0, -1);
+        list.add(2, 3);
+        list.add(2,0);
         list.print();
         
     }
