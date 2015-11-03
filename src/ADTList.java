@@ -12,6 +12,32 @@ public class ADTList {
     int lastValidIndex = 0;
     
     /**
+     * Removes an element in the array at a specified index
+     * @param index the index to clear
+     */
+    public void remove(int index)
+    {
+        // now that it's valid again, if the user inputs an index too large, make it the last valid one
+        if (index > lastValidIndex)
+        {
+            index = lastValidIndex;
+        }
+        // if the index is less than 0, set it to 0
+        else if (index < 0)
+        {
+            index = 0;
+        }
+        // Start at the index to remove and set it to the value of the index ahead of it
+        //      the limit is decreased by one because we're looking one ahead
+        for (int i = index; i < lastValidIndex; i ++)
+        {
+            array[i] = array[i+1];
+        }
+        // decrease the lastValidIndex because there's now one less element in the array
+        lastValidIndex --;
+    }
+    
+    /**
      * Adds an integer to a specified index in the array
      * @param index the location in the array to which the integer is added
      * @param num the integer to be added
