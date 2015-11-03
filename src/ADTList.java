@@ -11,47 +11,52 @@ public class ADTList {
     private int[] array = new int[1];
     int lastValidIndex = 0;
     
+    /**
+     * Adds an integer to a specified index in the array
+     * @param index the location in the array to which the integer is added
+     * @param num the integer to be added
+     */
     public void add(int index, int num)
     {
-        // lastValidIndex is not a valid index anymore
+        // if the lastValidIndex is not valid anymore, the array size is doubled
         if (lastValidIndex == array.length)
         {
-            expandArray();
+            doubleArray();
         }
         // now that it's valid again, if the user inputs an index too large, make it the last valid one
         if (index > lastValidIndex)
         {
             index = lastValidIndex;
         }
-        // If we're adding to the end, no point in suffling anything down
-        if (index == lastValidIndex)
+        // if the index is less than 0, set it to 0
+        else if (index < 0)
         {
-            array[index] = num;
+            index = 0;
         }
-        else
+        // if the index is not the last valid index, all of the elements are shuffled down
+        for (int i = lastValidIndex; i > index; i --)
         {
-            int current = array[index];
-            int next = array[index+1];
-            for (int i = index+1; i < lastValidIndex; i++)
-            {
-                array[i] = current;
-                current = next;
-                next = array[i+1];
-            }
-            array[index] = num;
+            array[i] = array[i-1];
         }
+        // the array slot the user specified is set to num
+        array[index] = num;
         
         // now that we have added to the array, we can increment the last valid index
         lastValidIndex ++;
     }
     
-    private void expandArray()
+    /**
+     * Doubles the array size
+     */
+    private void doubleArray()
     {
+        // create a new array which is twice as large as the original one, and simply add to it all of the elements in the old array
         int[] newArray = new int[array.length*2];
         for (int i = 0; i < array.length; i ++)
         {
             newArray[i] = array[i];
         }
+        // set the current array as this new doubled and repopulated array
         array = newArray;
     }
     
