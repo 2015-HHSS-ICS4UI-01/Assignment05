@@ -37,7 +37,10 @@ public class MyOrderedList {
     public void add(int num){
         //adding to an empty list
         if(numItems == 0){
-            add(new Node(num));
+            head = new Node(num);
+            //we've added a number
+            numItems++;
+        //adding to a list with one Node
         }else if(numItems == 1){
             if(head.getNum() > num){
                 Node temp = head;
@@ -50,22 +53,25 @@ public class MyOrderedList {
                 n.setPrev(head);
             }
             
+            //we've added a number
             numItems++;
-            
+        //adding to a list with more than one Node    
         }else{
             int index = 0;
             Node current = head;
-            while(index < numItems - 1){
-                if(current.getNum() > num){
-                   break;
-                }             
-                current = current.getNext(); 
+            while(index < numItems - 2 || current.getNum() < num){
+                   current = current.getNext();            
             }
             
-            Node n = new Node(num);
-            n.setNext(current);
-            n.setPrev(current.getPrev());
-            current.setPrev(n);
+            Node temp = current;
+            current = new Node(num);
+            current.setNext(temp);
+            temp.setPrev(current);
+            
+//            Node n = new Node(num);
+//            n.setNext(current);
+//            n.setPrev(current.getPrev());
+//            current.setPrev(n);
             
             //we've added a number
             numItems++; 
@@ -88,33 +94,41 @@ public class MyOrderedList {
      * Removes a node from a specific index.
      * @param index the position to remove a node from.
      */
-    public void remove(int index){
+    public void remove(int num){
         //make sure it is in our list
-        if(index >= numItems || index < 0){
+        Node check = head;
+        for(int i = 0; i < numItems; i++){
+            if(check.getNum() == num){
+                break;
+            }
+        }
+        
+        if(check.getNum() == num){
             return;
         }
+        
         //delete first item
-        if(index == 0){
-            head = head.getNext();
-        //deleting end item
-        }else if(index == numItems - 1){
-            //go to the second last node
-            Node n = head;
-            for(int i = 0; i < index - 1; i++){
-                n = n.getNext();
-            }
-            //make it point nowhere
-            n.setNext(null);
-        //remove from the middle
-        }else{
-            Node n = head;
-            for(int i = 0; i < index - 1; i++){
-                n = n.getNext();
-            }
-            //ask the node for its next next node
-            n.setNext(n.getNext().getNext());
-        }
-        numItems--;
+//        if(index == 0){
+//            head = head.getNext();
+//        //deleting end item
+//        }else if(index == numItems - 1){
+//            //go to the second last node
+//            Node n = head;
+//            for(int i = 0; i < index - 1; i++){
+//                n = n.getNext();
+//            }
+//            //make it point nowhere
+//            n.setNext(null);
+//        //remove from the middle
+//        }else{
+//            Node n = head;
+//            for(int i = 0; i < index - 1; i++){
+//                n = n.getNext();
+//            }
+//            //ask the node for its next next node
+//            n.setNext(n.getNext().getNext());
+//        }
+//        numItems--;
     }
     
     /**
