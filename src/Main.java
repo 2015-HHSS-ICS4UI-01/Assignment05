@@ -15,8 +15,6 @@ public class Main {
     public static void main(String[] args) {
         
         ADTList list = new ADTList();
-        list.add(0, 1);
-        list.remove(0);
         list.print();
         
     }

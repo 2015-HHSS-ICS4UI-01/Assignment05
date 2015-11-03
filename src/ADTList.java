@@ -29,7 +29,7 @@ public class ADTList {
         }
         // Start at the index to remove and set it to the value of the index ahead of it
         //      the limit is decreased by one because we're looking one ahead
-        for (int i = index; i < lastValidIndex; i ++)
+        for (int i = index; i < lastValidIndex-1; i ++)
         {
             array[i] = array[i+1];
         }
@@ -84,6 +84,36 @@ public class ADTList {
         }
         // set the current array as this new doubled and repopulated array
         array = newArray;
+    }
+    
+    /**
+     * Returns whether or not the array has any added elements
+     * @return true if the array is empty; otherwise, return false
+     */
+    public boolean isEmpty()
+    {
+        // if the lastValidIndex is 0, no elements have yet been added
+        return lastValidIndex == 0;
+    }
+    
+    /**
+     * Returns the number added elements in the array
+     * @return the number of added elements in the array
+     */
+    public int size()
+    {
+        // return lastValidIndex because it is one ahead of the last filled index, whose sequence starts at 0
+        return lastValidIndex;
+    }
+    
+    /**
+     * Gets an element from the array
+     * @param index the index of the element
+     * @return the element
+     */
+    public int get(int index)
+    {
+        return array[index];
     }
     
     public void print()
