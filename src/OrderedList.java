@@ -10,6 +10,7 @@
 public class OrderedList {
     private Node head;
     private int numItems;
+    private boolean isEmpty;
 
     /**
      * Creates an Empty List
@@ -20,16 +21,10 @@ public class OrderedList {
     } 
     
 
-    /**
-     * Add node to beginning to the list
-     *
-     * @param n the node to add
-     */
-    public void add(Node n) {
-        n.setNext(head);
-        head = n;
-        numItems++;
-    }
+
+
+
+
 
     /**
      * Adds a node at specific index
@@ -37,23 +32,23 @@ public class OrderedList {
      * @param index the position to place the node
      * @param n the node to add
      */
-    public void add(int index, Node n) {
+    public void add(Node n) {
         //adding to an empty list
         if (numItems == 0) {
-            add(n);
-        } else if (index == 0) {
-            add(n);
+            n.setNext(head);
+            head = n;
+            numItems++;
         } else {
+            
             Node current = head;
-            for (int i = 0; i < index - 1; i++) {
+            while(current != null && n.getNum() <= current.getNum()){
                 current = current.getNext();
             }
+            
+
             //set the node im adding next node
             n.setNext(current.getNext());
-            current.setNext(n);
-
-
-
+            current.setPrev(n);
             //weve added a number 
             numItems++;
         }
@@ -67,34 +62,58 @@ public class OrderedList {
         }
     }
 
-    public void remove(int index) {
-        //make sure it is in our list
-        if (index >= numItems || index < 0) {
+    public void remove(Node n) {
+        if (numItems == 0) {
+
             return;
-        }
-        //delete first item
-        if (index == 0) {
-            head = head.getNext();
-            //deleting end item
-        } else if (index == numItems - 1) {
-            //go to the second last node
-            Node n = head;
-            for (int i = 0; i < index - 1; i++) {
-                n = n.getNext();
-            }
-            //make it point nowhere
-            n.setNext(null);
-            //remove from the middle
+            
         } else {
-            Node n = head;
-            for (int i = 0; i < index - 1; i++) {
-                n = n.getNext();
+            Node current = head;
+            if(n.getNum() == current.getNum()){
+               n.setNext(head);
+               n.setPrev(null);
+            }else{
+            while(current != null && n.getNum() == current.getNum()){
+                current = current.getNext();
             }
-            //ask the node for its next next node
-            n.setNext(n.getNext().getNext());
+            
+
+            //set the node im adding next node
+            current.getPrev().setNext(current.getNext());
+            
+            
+            //weve added a number 
+            numItems--;
         }
-        numItems--;
     }
+        
+//        //make sure it is in our list
+//        if (index >= numItems || index < 0) {
+//            return;
+//        }
+//        //delete first item
+//        if (index == 0) {
+//            head = head.getNext();
+//            //deleting end item
+//        } else if (index == numItems - 1) {
+//            //go to the second last node
+//            Node n = head;
+//            for (int i = 0; i < index - 1; i++) {
+//                n = n.getNext();
+//            }
+//            //make it point nowhere
+//            n.setNext(null);
+//            //remove from the middle
+//        } else {
+//            Node n = head;
+//            for (int i = 0; i < index - 1; i++) {
+//                n = n.getNext();
+//            }
+//            //ask the node for its next next node
+//            n.setNext(n.getNext().getNext());
+//        }
+//        numItems--;
+//    }
 
     public int getInt(int index) {
         Node n = head;
@@ -103,13 +122,24 @@ public class OrderedList {
         }
         return n.getNum();
     }
-    
-    public int size(){
+
+    public int size() {
         return numItems;
     }
-    
-    
-    
+
+    public boolean isEmpty() {
+        if (numItems == 0) {
+            isEmpty = true;
+            return isEmpty;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
+
+    }
 }
+
+
+
 
 
