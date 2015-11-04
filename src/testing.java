@@ -14,9 +14,8 @@ public class testing {
      */
     public static void main(String[] args) {
         OrderedList list = new OrderedList();
-        list.add(7);
-        list.add(9);
         list.add(1);
+        list.add(2);
         list.printList();
     }
 }
