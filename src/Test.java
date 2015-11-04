@@ -17,6 +17,7 @@ public class Test {
         list.add(7);
         list.add(10);
         list.add(4);
+
         //System.out.println(list.get(0));
         list.printList();
     }

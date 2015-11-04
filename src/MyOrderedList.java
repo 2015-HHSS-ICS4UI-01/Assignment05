@@ -19,16 +19,6 @@ public class MyOrderedList {
         numItems = 0;
     }
     
-     /**
-     * Add the node to the beginning of the list.
-     * @param n the node to add
-     */
-    public void add(Node n){
-        n.setNext(head);
-        head = n;
-        numItems++;
-    }
-    
     /**
      * Adds a node at a specific index.
      * @param index the position to place the node
@@ -53,30 +43,37 @@ public class MyOrderedList {
                 n.setPrev(head);
             }
             
-            //we've added a number
             numItems++;
-        //adding to a list with more than one Node    
         }else{
-            int index = 0;
             Node current = head;
-            while(index < numItems - 2 || current.getNum() < num){
-                   current = current.getNext();            
+            int i = 0;
+            if(head.getNum() > num){
+                Node temp = head;
+                head = new Node(num);
+                head.setNext(temp);
+                temp.setPrev(head);
+            }else{
+                while(i < numItems || current.getNum() < num){
+                current = current.getNext();
+                i++;
             }
             
-            Node temp = current;
-            current = new Node(num);
-            current.setNext(temp);
-            temp.setPrev(current);
-            
+            } 
+            Node n = new Node(num);
+            n.setPrev(current.getPrev());
+            n.setNext(current);
+            current.getPrev().setNext(n);
+            current.setPrev(n);
+
 //            Node n = new Node(num);
 //            n.setNext(current);
 //            n.setPrev(current.getPrev());
 //            current.setPrev(n);
-            
-            //we've added a number
-            numItems++; 
-        }   
-            
+
+              //we've added a number
+              numItems++; 
+
+        }
     }
     
     /**

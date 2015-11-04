@@ -17,6 +17,7 @@ public class MyArrayList {
     public MyArrayList(){
         head = null;
         numItems = 0;
+        int[] nums = new int[10];
     }
     
     /**
