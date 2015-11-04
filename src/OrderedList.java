@@ -27,7 +27,7 @@ public class OrderedList {
      * @param index the position to place the node
      * @param n the node to add
      */
-    public void add(Node n) {
+   public void add(Node n) {
         //adding to an empty list
         if (numItems == 0) {
             n.setNext(head);
@@ -40,10 +40,22 @@ public class OrderedList {
                 current = current.getNext();
             }
 
-
+            if(current == null){
+                
+                
+                
+            }else if(current == head){
+                
+                
+                
+            }else{
             //set the node im adding next node
-            n.setNext(current.getNext());
+            n.setNext(current);
+            n.setPrev(current.getPrev());
+            n.getPrev().setNext(n);
             current.setPrev(n);
+            }
+            
             //weve added a number 
             numItems++;
         }
