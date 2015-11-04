@@ -18,52 +18,24 @@ public class OrderedList {
     }
 
     public void add(int num) {
-        Node n = head; //the first node
-        Node temp = new Node(num);
+
+        Node n = head; //used to keep track of position
+        Node numNode = new Node(num); 
         if (numItems == 0) {
-            temp.setNext(head);
-            head = temp; //first node becomes temp
+            head = numNode; //add the number to the start
+        } else if (num < head.getNum()) { //if the number added is less than the number in the list
+            numNode.setNext(head); //number comes before the previous head
+            head = numNode; //the head becomes the number
         } else {
-            //current = head
-            for (int x = 0; x < numItems; x++) {
-                n = n.getNext();
-                if (n == head) {
-                    if (n.getNum() <= num) {
-                        n.setNext(temp);
-                    }
-                    else
-                    {
-                        temp.setNext(n);
-                        head = temp;
-                    }
-                } else if (n.getNum() <= num) {
-                    n.setNext(temp);
-                }
-                else {
-                    
+            for (int x = 0; x < numItems - 1; x++) { //iterate through the nodes except for the last (because its null)
+                if (num > n.getNext().getNum()) { //if the number is bigger than the next number
+                    n = n.getNext(); //n becomes the node that is bigger than number
                 }
             }
+            numNode.setNext(n.getNext()); //the number comes before the bigger node
+            n.setNext(numNode); //the bigger node is followed by number
         }
-    }
 
-    public void add1(int num) {
-
-        Node n = head; //the first node
-        Node temp = new Node(num);
-        if (numItems == 0) {
-            head = temp; //first node becomes temp
-            temp.setNext(head);
-        } else {
-            for (int x = 0; x < numItems; x++) {
-                if (num < n.getNum()) { //if the number added is less than the number in the list
-                    n.setPrev(temp); //set the first num
-                    //head.setNext(n);
-                } else {
-                    n.setNext(temp);
-                    n = n.getNext();
-                }
-            }
-        }
         numItems++;
     }
 
