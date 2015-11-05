@@ -16,9 +16,19 @@ public class Test {
         MyOrderedList list = new MyOrderedList();
         list.add(7);
         list.add(10);
+        list.add(12);
         list.add(4);
-
-        //System.out.println(list.get(0));
+        list.add(6);
+        list.add(11);
+        list.add(20);
+        list.add(11);
+        list.add(9);
+        
         list.printList();
+        
+        System.out.println("List Size: " + list.size());
+        System.out.println("Empty? " + list.isEmpty());
+        System.out.println("Value of Node at index 5: " + list.get(5));
+        
     }
 }
