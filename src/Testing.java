@@ -14,6 +14,7 @@ public class Testing {
      */
     public static void main(String[] args) {
         OrderedList list = new OrderedList();
+        list.isEmpty();
         list.add(new Node(1));
         list.add(new Node(5));
         list.add(new Node(3));
@@ -24,6 +25,10 @@ public class Testing {
         list.add(new Node(6));
         list.add(new Node(8));
         list.add(new Node(2));
+        list.printList();
+        System.out.println("");
+        list.size();
+        //list.remove(new Node(3));
         list.printList();
         
     }

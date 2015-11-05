@@ -36,7 +36,7 @@ public class OrderedList {
         } else {
 
             Node current = head;
-            while (current != null && n.getNum() <= current.getNum()) {
+            while (current != null && (n.getNum() >= current.getNum())) {
                 if (current.getNext() != null) {
                     current = current.getNext();
                 } else {
@@ -44,23 +44,25 @@ public class OrderedList {
                 }
             }
 
-            if (current.getNext() == null) {
-                current.setNext(n);
+            if (current.getNext() == null && n.getNum() >= current.getNum()) {
                 n.setPrev(current);
-
+                current.setNext(n);
+                n.setNext(null);
+                System.out.println("ending: " + n.getNum());
 
             } else if (current == head) {
-
                 n.setNext(current);
                 current.setPrev(n);
                 head = n;
-
-            } else if (current != head && current.getNext() != null) {
+                System.out.println("starting: " + n.getNum());
+                
+            } else{
                 //set the node im adding next node
                 n.setNext(current);
                 n.setPrev(current.getPrev());
                 n.getPrev().setNext(n);
                 current.setPrev(n);
+                System.out.println("mid: " + n.getNum());
             }
             //weve added a number 
             numItems++;
@@ -89,8 +91,6 @@ public class OrderedList {
                 while (current != null && n.getNum() == current.getNum()) {
                     current = current.getNext();
                 }
-
-
                 //set the node im adding next node
                 current.getPrev().setNext(current.getNext());
 
