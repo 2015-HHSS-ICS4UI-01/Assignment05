@@ -28,12 +28,12 @@ public class Testing {
         list.add(2,0);
         list.add(4,13);
         
-        
+        list.remove(3);
         
         
         list.printList();
 //        System.out.println(list.size());
-        System.out.println(list.isEmpty());
+//        System.out.println(list.isEmpty());
         
     }
 }
