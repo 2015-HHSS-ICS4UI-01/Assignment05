@@ -20,7 +20,10 @@ public class Testing {
         list.add(new Node(11));
         list.printList();
         System.out.println("");
-
+        list.add(new Node(1));
+        list.add(new Node(6));
+        list.add(new Node(8));
+        list.add(new Node(2));
         list.printList();
         
     }
