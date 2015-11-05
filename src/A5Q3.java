@@ -11,26 +11,41 @@ public class A5Q3 {
 
     public boolean isMirrored(String word) {
         Stack stack = new Stack();
-        boolean mirrored = true;
+        String storedWord = new String();
+        int storedLength = 1;
         
         if (word.length() % 2 == 1) {
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) == '$') {
-                    String check = word.substring(i + 1);
+                    storedWord = word.substring(i + 1);
+                    storedLength = storedWord.length();
                     break;
                 } else {
-                    Node temp = new Node(i);
+                    Node temp = new Node(word.charAt(i));
                     stack.push(temp);
                 }
             }
             for(int i = 0; i < word.length(); i ++){
-                if()
+                Node stackWord = stack.pop();
+                
+                
+                if(stackWord.getNum() == storedWord.charAt(i)){
+                    storedLength--;
+                    
+                }else {
+                    return false;
+                }
             }
 
         } else {
             return false;
         }
-
+        
+        if(stack.size() == 0 && storedLength == 0){
+           return true; 
+        }else {
+            return false;
+        }
 
     }
 
