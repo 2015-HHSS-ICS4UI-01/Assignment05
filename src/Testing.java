@@ -27,7 +27,9 @@ public class Testing {
         list.add(new Node(2));
         list.printList();
         System.out.println("");
-        list.size();
+        System.out.println(list.size());
+        System.out.println("");
+        
         //list.remove(new Node(3));
         list.printList();
         
