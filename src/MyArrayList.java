@@ -10,6 +10,7 @@
 public class MyArrayList {
     private Node head;
     private int numItems;
+    private int[] nums;
     
     /**
      * Creates an empty list.
@@ -17,52 +18,81 @@ public class MyArrayList {
     public MyArrayList(){
         head = null;
         numItems = 0;
-        int[] nums = new int[10];
+        nums = new int[10];
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = 0;
+        }
     }
     
     /**
-     * Add the node to the beginning of the list.
-     * @param n the node to add
-     */
-    public void add(Node n){
-        n.setNext(head);
-        head = n;
-        numItems++;
-    }
-    
-    /**
-     * Adds a node at a specific index.
+     * Adds a number at a specific index of an array.
      * @param index the position to place the node
      * @param n the node to add
      */
-    public void add(int index, Node n){
+    public void add(int index, int num){
+        //if the total amount of numbers in the array is equal to its length
+        //make an array twice the size of the current one
+        if(numItems == nums.length){
+            int[] newNums = new int[nums.length*2];
+            for(int i = 0; i < newNums.length; i++){
+                //add all numbers from the old array to the new one
+                if(i < nums.length){
+                    newNums[i] = nums[i];
+                }
+                //fill the array's new empty spaces with zeros
+                else if(i > nums.length){
+                    newNums[i] = 0;
+                }
+            }
+            //make the new array the array to add numbers to
+            nums = newNums;
+        }
         //adding to an empty list
         if(numItems == 0){
-            add(n);
-        }else if(index == 0){
-            add(n);
-        }else{
-            Node current = head;
-            for(int i = 0; i < index - 1; i++){
-               current = current.getNext(); 
+            nums[index] = num;
+            numItems++;
+        }
+        //adding to an empty spot
+        else if(nums[index] == 0){
+            nums[index] = num;
+            numItems++;
+        }
+        //adding to a spot that is occupied by another number
+        else{
+            for(int i = nums.length; i >= index; i--){
+                //if there is no room to move the last number of the array
+                //make an array twice the size of the current one
+                if(nums[nums.length - 1] != 0){
+                    int[] newNums = new int[nums.length*2];
+                    for(int j = 0; j < newNums.length; j++){
+                        if(j < nums.length){
+                            newNums[j] = nums[j];
+                        }else if(j > nums.length){
+                            newNums[j] = 0;
+                        }
+                    }
+                }
+                //if there is room to move a number to the last part of the array
+                else if(nums[nums.length - 1] == 0){
+                    //do nothing
+                }
+                nums[i] = nums[i+1];
             }
-            //set the node I'm adding's next node
-            n.setNext(current.getNext());
-            current.setNext(n);
             
-            //we've added a number
+            nums[index] = num;
+            
+            //a number has been added
             numItems++; 
-        }       
+            
+        }
     }
     
     /**
-     * Print out the list of Nodes.
+     * Print out the list of numbers.
      */
     public void printList(){
-        Node n = head;
-        while(n != null){
-            System.out.println(n.getNum());
-            n = n.getNext();
+        for(int i = 0; i < nums.length; i++){
+            System.out.println(nums[i]);
         }
     }
     
@@ -105,11 +135,7 @@ public class MyArrayList {
      * @return the value of the Node.
      */
     public int getInt(int index){
-        Node n = head;
-        for(int i = 0; i < index; i++){
-            n = n.getNext();
-        }
-        return n.getNum();
+        return nums[index];
     }
     
     /**
@@ -120,6 +146,10 @@ public class MyArrayList {
         return numItems;
     }
     
+    /**
+     * Check if the list is empty or not.
+     * @return whether or not the list has Nodes in it.
+     */
     public boolean isEmpty(){
         if(numItems <= 0){
             return true;

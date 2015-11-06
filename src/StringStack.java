@@ -7,7 +7,7 @@
  *
  * @author besem4079
  */
-public class Stack {
+public class StringStack {
     
     private Node head;
     private int numItems;
@@ -15,22 +15,22 @@ public class Stack {
     /**
      * Constructor for the Stacks.
      */
-    public Stack(){
+    public StringStack(){
         head = null;
         numItems = 0;
     }
     
     /**
-     * Get the size of the Stack.
-     * @return the number of items in the Stack.
+     * Get the size of the StringStack.
+     * @return the number of items in the StringStack.
      */
     public int size(){
         return numItems;
     }
     
     /**
-     * Get the first node in the Stack.
-     * @return the head Node of the Stack.
+     * Get the first node in the StringStack.
+     * @return the head Node of the StringStack.
      */
     public Node peek(){
         return head;
