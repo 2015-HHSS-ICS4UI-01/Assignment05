@@ -16,7 +16,6 @@ public class MyArrayList {
      * Creates an empty list.
      */
     public MyArrayList(){
-        head = null;
         numItems = 0;
         nums = new int[10];
         for(int i = 0; i < nums.length; i++){
@@ -27,7 +26,7 @@ public class MyArrayList {
     /**
      * Adds a number at a specific index of an array.
      * @param index the position to place the node
-     * @param n the node to add
+     * @param num the number to add
      */
     public void add(int index, int num){
         //if the total amount of numbers in the array is equal to its length
@@ -59,29 +58,37 @@ public class MyArrayList {
         }
         //adding to a spot that is occupied by another number
         else{
-            for(int i = nums.length; i >= index; i--){
-                //if there is no room to move the last number of the array
-                //make an array twice the size of the current one
-                if(nums[nums.length - 1] != 0){
-                    int[] newNums = new int[nums.length*2];
-                    for(int j = 0; j < newNums.length; j++){
-                        if(j < nums.length){
-                            newNums[j] = nums[j];
-                        }else if(j > nums.length){
-                            newNums[j] = 0;
-                        }
+            //if there is no room to move the last number of the array
+            //make an array twice the size of the current one
+            int length = nums.length - 1;
+            if(nums[nums.length-1] != 0){
+                int[] newNums = new int[nums.length*2];
+                for(int j = 0; j < newNums.length; j++){
+                    if(j < nums.length){
+                        newNums[j] = nums[j];
+                    }else if(j > nums.length){
+                        newNums[j] = 0;
                     }
                 }
-                //if there is room to move a number to the last part of the array
-                else if(nums[nums.length - 1] == 0){
+                //make the new array the array to add numbers to
+                nums = newNums;
+            }
+            System.out.println(length);
+            System.out.println(nums.length);
+            for(int i = length; i >= index; i--){ 
+                //if the last part of the array is zero
+                if(nums[i] == length && nums[length] == 0){
                     //do nothing
                 }
+                //if the number to move is not the last part of the array
                 //shift the number to the right
-                nums[i] = nums[i+1];
+                else{
+                    nums[i+1] = nums[i];    
+                }
             }
             
+            //add the number to the array
             nums[index] = num;
-            
             //a number has been added
             numItems++; 
             
