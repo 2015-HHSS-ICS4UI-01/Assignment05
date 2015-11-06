@@ -124,4 +124,15 @@ public class OrderedList {
         return length == 0;
     }
     
+    public void print()
+    {
+        Node curNode = head;
+        for (int i = 0; i < length; i ++)
+        {
+            System.out.println(curNode.getValue());
+            curNode = curNode.getChildNode();
+        }
+        System.out.println("");
+    }
+    
 }
