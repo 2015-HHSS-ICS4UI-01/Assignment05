@@ -8,7 +8,7 @@
  * @author donet6376
  */
 public class A5Q3 {
-
+    
     public boolean isMirrored(String word) {
         Stack stack = new Stack();
         String storedWord = new String();
@@ -21,15 +21,15 @@ public class A5Q3 {
                     storedLength = storedWord.length();
                     break;
                 } else {
-                    Node temp = new Node(word.charAt(i));
+                    StringNode temp = new StringNode(word.charAt(i));
                     stack.push(temp);
                 }
             }
-            for(int i = 0; i < word.length(); i ++){
-                Node stackWord = stack.pop();
+            for(int i = 0; i < word.length(); i++){
+                StringNode stackWord = stack.pop();
                 
                 
-                if(stackWord.getNum() == storedWord.charAt(i)){
+                if(stackWord.getString() == storedWord.charAt(i)){
                     storedLength--;
                     
                 }else {
@@ -46,11 +46,13 @@ public class A5Q3 {
         }else {
             return false;
         }
-
+        
     }
 
+    
     public static void main(String[] args) {
         A5Q3 test = new A5Q3();
         System.out.println(test.isMirrored("cat$tac"));
+        
     }
 }

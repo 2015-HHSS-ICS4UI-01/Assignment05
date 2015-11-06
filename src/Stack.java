@@ -3,41 +3,40 @@
  * and open the template in the editor.
  */
 
-
 /**
  *
  * @author donet6376
  */
 public class Stack {
-    
-    private Node head;
+
+    private StringNode head;
     private int numItems;
-    
-    
-    public Stack(){
+
+    public Stack() {
         head = null;
         numItems = 0;
     }
-    
-    public int size(){
+
+    public int size() {
         return numItems;
     }
-    
-    public Node peek(){
+
+    public StringNode peek() {
         return head;
     }
-    
-    public void push(Node n){
+
+    public void push(StringNode n) {
         n.setNext(head);
         head = n;
         numItems++;
     }
-    
-    public Node pop(){
-        Node temp = head;
-        head = head.getNext();
+
+    public StringNode pop() {
+        StringNode temp = head;
+        if (head.getNext() != null) {
+            head = head.getNext();
+        }
         numItems--;
         return temp;
     }
-    
 }
