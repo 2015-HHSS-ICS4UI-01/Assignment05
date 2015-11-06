@@ -25,9 +25,6 @@ public class OrderedList {
      */
     public void add(Node n) {
         // adding to an empty list 
-
-
-
         if (numItems == 0) {
             n.setNext(head);
             head = n;
@@ -40,6 +37,7 @@ public class OrderedList {
                 current = current.getNext();
                 counter++;
             }
+            //    System.out.println("current value is " +current.getNum());
 
             if (counter == 0) {
                 n.setNext(head);
@@ -47,6 +45,10 @@ public class OrderedList {
                 head = n;
                 n.setPrev(null);
                 numItems++;
+            } else if (counter == numItems - 1) {
+                n.setPrev(current);
+                n.setNext(null);
+                current.setNext(n);
             } else {
 
                 n.setPrev(current.getPrev());
@@ -54,16 +56,29 @@ public class OrderedList {
                 current.setPrev(n);
                 n.getPrev().setNext(n);
                 numItems++;
-
-
-
-
             }
+        }
+    }
 
-
-
+    public void remove(int num) {
+        Node current = head;
+        while (num != current.getNum() && (current.getNext() != null)) {
+            current = current.getNext();
         }
 
+//        
+        if (current.getNum() == num) {
+            if (current.getNext() == null) {
+                current.getPrev().setNext(null);
+            } else if (current.getPrev() == null) {
+
+                current.getNext().setPrev(null);
+                head = current.getNext();
+            } else {
+                current.getPrev().setNext(current.getNext());
+                current.getNext().setPrev(current.getPrev());
+            }
+        }
     }
 
     public void printList() {
@@ -72,5 +87,25 @@ public class OrderedList {
             System.out.println(n.getNum());
             n = n.getNext();
         }
+    }
+
+    public void size() {
+        System.out.println("the number of items in the list is: " + numItems);
+    }
+
+    public void isEmpty() {
+        if (numItems == 0) {
+            System.out.println("the list is empty");
+        }
+    }
+
+    public void get(int index) {
+        int counter = 0;
+        Node current = head;
+        while (counter != index) {
+            counter++;
+            current = current.getNext();
+        }
+        System.out.println("the number at " + counter + " is " + current.getNum());
     }
 }

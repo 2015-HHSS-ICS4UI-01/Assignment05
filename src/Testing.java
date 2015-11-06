@@ -18,9 +18,14 @@ public class Testing {
            list.add(new Node(8));
            list.add(new Node(6));
            list.add(new Node(4));
+           
            list.printList();
+           list.get(2);
+           list.size();
+           list.isEmpty();
+           list.remove(7);
            System.out.println("");
-           list.add(new Node(9));
+//           list.add(new Node(11));
         
            
            list.printList();
