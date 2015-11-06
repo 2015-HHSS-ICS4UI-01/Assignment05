@@ -76,6 +76,7 @@ public class MyArrayList {
                 else if(nums[nums.length - 1] == 0){
                     //do nothing
                 }
+                //shift the number to the right
                 nums[i] = nums[i+1];
             }
             
