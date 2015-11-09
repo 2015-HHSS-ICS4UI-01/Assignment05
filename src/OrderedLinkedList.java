@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 
-
 /**
  *
  * @author janaj4926
@@ -18,57 +17,103 @@ public class OrderedLinkedList {
         items = 0;
     }
     boolean empty = true;
-    private Node place;
 
     public void add(Node num) {
         //if there is nothing in the list
         if (items == 0) {
             num.setNext(first);
+            num.setPrev(first);
             first = num;
             items++;
+        } else {
+
 
             //if the list has stuff in it
             //
+            
             //if the num is less than or equal to the first put the num at the front
-        } else if (num.getNum() < first.getNum() || num.getNum() == first.getNum()) {
-            num.setNext(first);
-            first = num;
-            items++;
-
-            //sorting out the middle
-        } else {
-            Node current = first;
-            for (int i = 0; i < items; i++) {
-                //continue if the the next number in the list is smaller than  my number
-                if (current.getNext().getNum() < current.getNum() || current.getNext() == null) {
-                    if (current.getNext() == null) {
-                        current.setPrev(current.getNext());
-                        current.setNext(null);
+            Node place = first;
+            if (num.getNum() < first.getNum() || num.getNum() == first.getNum()) {
+                num.setNext(first);
+                first.setNext(place.getNext());
+                first.setPrev(num);
+                first = num;
+                items++;
+                
+            } else {
+                
+                //sorting out the middle
+                //
+                
+                boolean inserted = false;
+                Node current = first;
+                while (!inserted) {
+                    
+                    //if the very first number in the list is less than the number and there are only two numbers in the list 
+                    if(first.getNum() < num.getNum() && items == 1){
+                        num.setPrev(current);
+                        num.setNext(null);
+                        first.setNext(num);
                         items++;
-                    } else {
-                        current.setNext(current.getNext().getNext());
-                        current.setPrev(current.getNext());
-                    }
-
+                        inserted = true;
+                    }else
+                    
                     //if the next number in the list is bigger than my current number
-                } else if (current.getNext().getNum() > current.getNum() || current.getNext().getNum() == current.getNum()) {
-                    num.setNext(current.getNext());
-                    num.setPrev(current.getPrev());
-                    items++;
+                    if (current.getNext().getNum() > num.getNum() || current.getNext().getNum() == num.getNum()) {
+                        num.setNext(current.getNext());
+                        num.setPrev(current);
+                        current.setNext(num);
+                        items++;
+                        inserted = true;
+                        
+                    } else 
+                        
+                    //continue if the the next number in the list is smaller than  my number
+                    if (current.getNext().getNum() < num.getNum()) {
+                        //if at the second last spot
+                        if (current.getNext() == null) {
+                            current.setPrev(current.getNext());
+                            current.setNext(null);
+                            items++;
+                            inserted = true;
+                            
+                        } else {
+                            current = current.getNext();
+                            
+                        }
 
-                    //if at the end
-                } else if (current.getNext() == null) {
-                    num.setNext(null);
-                    num.setPrev(current.getPrev());
-                    items++;
+                    }//if at the end
+                    if (current.getNext() == null) {
+                        num.setNext(null);
+                        num.setPrev(current.getPrev());
+                        current.setNext(num);
+                        items++;
+                        inserted = true;
+                    }
                 }
             }
         }
     }
 
     public void remove(int num) {
-
-
+        Node spot = first;
+        for(int i = 0; i < items; i++){
+            if(num == spot.getNum()){
+                if(spot.getPrev() == null){
+                    spot.setNext(null);
+                    break;
+                }else if(spot.getNext() == null){
+                    spot.setPrev(null);
+                    break;
+                }else
+                spot.getPrev().setNext(spot.getNext());
+                spot.getNext().setPrev(spot.getPrev());
+                spot.setNext(null);
+                spot.setPrev(null);
+                break;
+            }
+            spot = spot.getNext();
+        }
         items--;
     }
 
@@ -88,7 +133,7 @@ public class OrderedLinkedList {
     public void printList() {
         Node n = first;
         while (n != null) {
-            System.out.println(n.getNum());
+            System.out.print(n.getNum() + ", ");
             n = n.getNext();
         }
     }
