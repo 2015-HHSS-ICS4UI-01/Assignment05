@@ -26,8 +26,8 @@ public class MyArrayList {
     
     /**
      * Adds a number at a specific index of an array.
-     * @param index the position to place the node
-     * @param n the node to add
+     * @param index the position to place the number.
+     * @param n the number to add.
      */
     public void add(int index, int num){
         //if the total amount of numbers in the array is equal to its length
@@ -40,46 +40,56 @@ public class MyArrayList {
                     newNums[i] = nums[i];
                 }
                 //fill the array's new empty spaces with zeros
-                else if(i > nums.length){
+                else if(i >= nums.length){
                     newNums[i] = 0;
                 }
             }
             //make the new array the array to add numbers to
             nums = newNums;
         }
-        //adding to an empty list
-        if(numItems == 0){
-            nums[index] = num;
-            numItems++;
+        //if user tries to add a number at a spot not in the array, or a 0
+        if(index > nums.length || num == 0){
+            //do nothing
         }
-        //adding to an empty spot
-        else if(nums[index] == 0){
+        //adding to an empty spot or an empty list
+        else if(nums[index] == 0 || numItems == 0){
             nums[index] = num;
             numItems++;
         }
         //adding to a spot that is occupied by another number
         else{
-            for(int i = nums.length; i >= index; i--){
+            for(int i = nums.length - 1; i >= index; i--){
                 //if there is no room to move the last number of the array
                 //make an array twice the size of the current one
-                if(nums[nums.length - 1] != 0){
+                if(i == nums.length - 1 && nums[nums.length - 1] != 0){
                     int[] newNums = new int[nums.length*2];
                     for(int j = 0; j < newNums.length; j++){
+                        //add the numbers of the old list to the new list
                         if(j < nums.length){
                             newNums[j] = nums[j];
-                        }else if(j > nums.length){
+                        }
+                        //initialize the rest of the new list
+                        else if(j >= nums.length){
                             newNums[j] = 0;
                         }
+                        
                     }
+                    //set the new list as the list to add numbers to
+                    nums = newNums;
+                    nums[i+1] = nums[i];
+                    
                 }
                 //if there is room to move a number to the last part of the array
-                else if(nums[nums.length - 1] == 0){
+                else if(i == nums.length - 1 && nums[nums.length - 1] == 0){
                     //do nothing
                 }
-                //shift the number to the right
-                nums[i] = nums[i+1];
+                //if number is not at the end of the array
+                else{
+                    //shift the number to the right
+                    nums[i+1] = nums[i];
+                }
             }
-            
+            //add the number into the specified location
             nums[index] = num;
             
             //a number has been added
@@ -98,50 +108,41 @@ public class MyArrayList {
     }
     
     /**
-     * Removes a node from a specific index.
-     * @param index the position to remove a node from.
+     * Removes a number from a specific index.
+     * @param index the position to remove a number from.
      */
     public void remove(int index){
         //make sure it is in our list
+        //if it isn't, return nothing
         if(index >= numItems || index < 0){
             return;
         }
-        //delete first item
-        if(index == 0){
-            head = head.getNext();
-        //deleting end item
-        }else if(index == numItems - 1){
-            //go to the second last node
-            Node n = head;
-            for(int i = 0; i < index - 1; i++){
-                n = n.getNext();
-            }
-            //make it point nowhere
-            n.setNext(null);
-        //remove from the middle
-        }else{
-            Node n = head;
-            for(int i = 0; i < index - 1; i++){
-                n = n.getNext();
-            }
-            //ask the node for its next next node
-            n.setNext(n.getNext().getNext());
+        
+        for(int i = index + 1; i < nums.length; i++){
+            nums[i-1] = nums[i];
         }
+        
+        //if not already 0, set the end of the list to 0
+        if(nums[nums.length - 1] != 0){
+            nums[nums.length - 1] = 0;
+        }
+        
+        //a number has been removed
         numItems--;
     }
     
     /**
-     * Get the value of a Node at a specified index.
-     * @param index the position of the Node to check.
-     * @return the value of the Node.
+     * Get the value of a number at a specified index.
+     * @param index the position of the number to check.
+     * @return the number at the specific position
      */
-    public int getInt(int index){
+    public int get(int index){
         return nums[index];
     }
     
     /**
      * Get the total size of the List.
-     * @return the number of Nodes in the List.
+     * @return the total amount of numbers in the List.
      */
     public int size(){
         return numItems;
@@ -149,7 +150,7 @@ public class MyArrayList {
     
     /**
      * Check if the list is empty or not.
-     * @return whether or not the list has Nodes in it.
+     * @return whether or not the list has numbers in it.
      */
     public boolean isEmpty(){
         if(numItems <= 0){

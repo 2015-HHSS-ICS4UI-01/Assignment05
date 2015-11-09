@@ -36,12 +36,20 @@ public class StringStack {
         return head;
     }
     
+    /**
+     * Adds a Node to the top of the Stack.
+     * @param n the value of the Node being added.
+     */
     public void push(Node n){
         n.setNext(head);
         head = n;
         numItems++;
     }
     
+    /**
+     * Removes a Node from the top of the Stack.
+     * @return the Node that was removed.
+     */
     public Node pop(){
         Node temp = head;
         head = head.getNext();

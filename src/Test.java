@@ -36,18 +36,26 @@ public class Test {
         MyArrayList list2 = new MyArrayList();
         
         list2.add(0,2);
-        list2.add(1,1);
-        list2.add(2,6);
-        list2.add(3,56);
+        list2.add(0,1);
+        list2.add(0,6);
+        list2.add(0,56);
         list2.add(0,33);
-//        list2.add(4,23);
-//        list2.add(5,89);
-//        list2.add(6,12);
-//        list2.add(7,10);
-//        list2.add(8,12);
-//        list2.add(9,60); 
-        //list2.add(10,12);
+        list2.add(0,23);
+        list2.add(0,12);
+        list2.add(0,75);
+        list2.add(0,54);
+        list2.add(0,123);
+        list2.add(0,14);
+        list2.remove(3);
+        
         list2.printList();
+        
+        System.out.println("List Size: " + list2.size());
+        System.out.println("Empty? " + list.isEmpty());
+        System.out.println("Value of number at index 3: " + list2.get(3));
+        
+        //tests the String stack
+        
         
     }
 }
