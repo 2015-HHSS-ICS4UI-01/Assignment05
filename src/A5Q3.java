@@ -8,12 +8,12 @@
  * @author donet6376
  */
 public class A5Q3 {
-    
+
     public boolean isMirrored(String word) {
         Stack stack = new Stack();
         String storedWord = new String();
         int storedLength = 1;
-        
+
         if (word.length() % 2 == 1) {
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) == '$') {
@@ -25,14 +25,14 @@ public class A5Q3 {
                     stack.push(temp);
                 }
             }
-            for(int i = 0; i < word.length(); i++){
+            for (int i = 0; i < storedWord.length(); i++) {
                 StringNode stackWord = stack.pop();
-                
-                
-                if(stackWord.getString() == storedWord.charAt(i)){
+
+
+                if (stackWord.getString() == storedWord.charAt(i)) {
                     storedLength--;
-                    
-                }else {
+
+                } else {
                     return false;
                 }
             }
@@ -40,19 +40,18 @@ public class A5Q3 {
         } else {
             return false;
         }
-        
-        if(stack.size() == 0 && storedLength == 0){
-           return true; 
-        }else {
+
+        if (stack.size() == 0 && storedLength == 0) {
+            return true;
+        } else {
             return false;
         }
-        
+
     }
 
-    
     public static void main(String[] args) {
         A5Q3 test = new A5Q3();
-        System.out.println(test.isMirrored("cat$tac"));
-        
+        System.out.println(test.isMirrored("dog$god"));
+
     }
 }
