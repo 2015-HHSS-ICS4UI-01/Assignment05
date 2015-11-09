@@ -77,24 +77,26 @@ public class OrderedList {
         }
     }
 
-    public void remove(Node n) {
+    public void remove(int n) {
         if (numItems == 0) {
 
             return;
 
         } else {
             Node current = head;
-            if (n.getNum() == current.getNum()) {
-                n.setNext(head);
-                n.setPrev(null);
+            if (n == current.getNum()) {
+                head = current.getNext();
+                head.setPrev(null);
             } else {
-                while (current != null && n.getNum() == current.getNum()) {
+                while (current != null && n == current.getNum()) {
                     current = current.getNext();
                 }
                 //set the node im adding next node
-                current.getPrev().setNext(current.getNext());
-
-
+                
+                if(current.getNext() == null){
+                    current.getPrev().setNext(null);
+                }else
+                    current.getPrev().setNext(current.getNext());
                 //weve added a number 
                 numItems--;
             }
