@@ -31,76 +31,20 @@ public class OrderedList {
         if (numItems == 0) {
             temp.setNext(head);
             head = temp;
-        } else if (numItems == 1) {
-            if (current.getNum() <= num) {
-                current.setNext(temp);
-            } else {
-                temp.setNext(current);
-                head = temp;
-            }
-        } else if (numItems == 2) {
-            if (current.getNext().getNum() <= num) {
-                current.getNext().setNext(temp);
-            } else {
-                temp.setNext(current.getNext());
-                current.setNext(temp);
-                if (current.getNum() <= num) {
-                    current.setNext(temp);
-                    temp.setNext(current.getNext());
-                } else {
-                    current.setNext(temp.getNext());
-                    temp.setNext(current);
-                    head = temp;
-                }
-            }
-        } else {
-
-            for (int j = 2; j <numItems; j++) {
-                current = head;
-                for (int i = 0; i < numItems - j; i++) {
-                    current = current.getNext();
-                }
-                if (current.getNext().getNum() <= num) {
-                    temp.setNext(current.getNext().getNext());
-                    current.getNext().setNext(temp);
-                    break;
-                }
-            }
-        }
-        numItems++;
-    }
-
-    public void add1(int num) {
-        Node temp = new Node(num);
-        Node current = head;
-        if (numItems == 0) {
-            temp.setNext(head);
+        } else if (head.getNum() > num) {
+            temp.setNext(current);
             head = temp;
         } else {
             current = head;
-            for (int i = 0; i < numItems - 1; i++) {
-                current = current.getNext();
-                if (current.getNum() <= num) {
-                    current.setNext(temp);
-                } else {
-                    current = head;
-                    for (int x = 0; x < numItems - 2; x++) {
-                        current = current.getNext();
-                    }
-                    if (numItems == 1) {
-                        temp.setNext(head);
-                        head = temp;
-                    } else {
-                        // set the node im adding's next node
-                        temp.setNext(current.getNext());
-                        current.setNext(temp);
-                    }
+            for (int j = 0; j < numItems - 1; j++) {
+                if (current.getNext().getNum() < num) {
+                    current = current.getNext();
                 }
-
             }
+            temp.setNext(current.getNext());
+            current.setNext(temp);
         }
         numItems++;
-
     }
 
     public void printList() {
@@ -111,7 +55,26 @@ public class OrderedList {
         }
     }
 
+    public boolean isEmpty() {
+        if (numItems == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void remove(int num) {
+        Node n = head;
+        for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) {
+            if (num == head.getNum()) {
+                head = head.getNext();
+                break;
+            } else if (n.getNext().getNum() == num) {
+                n.setNext(n.getNext().getNext());
+                break;
+            }
+            n = n.getNext();
+        }
     }
 
     public int getInt(int index) {
