@@ -16,7 +16,6 @@ public class MyArrayList {
      * Creates an empty list.
      */
     public MyArrayList(){
-        head = null;
         numItems = 0;
         nums = new int[10];
         for(int i = 0; i < nums.length; i++){
@@ -91,7 +90,6 @@ public class MyArrayList {
             }
             //add the number into the specified location
             nums[index] = num;
-            
             //a number has been added
             numItems++; 
             
