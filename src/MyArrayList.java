@@ -8,7 +8,6 @@
  * @author besem4079
  */
 public class MyArrayList {
-    private Node head;
     private int numItems;
     private int[] nums;
     
@@ -90,6 +89,7 @@ public class MyArrayList {
             }
             //add the number into the specified location
             nums[index] = num;
+            
             //a number has been added
             numItems++; 
             
