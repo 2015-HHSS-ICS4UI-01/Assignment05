@@ -10,6 +10,44 @@
 public class Test {
 
     /**
+     * Checks a string to see if it is of the type w$w (e.g. cat$tac)
+     * @param word the word to check
+     */
+    static boolean isW$W(String word){
+        Stack check = new Stack();
+        
+        //reverses the word by adding it to the stack
+        for(int i = 0; i < word.length(); i++){
+            check.push(word.charAt(i));
+        }
+        
+        //String to hold the reversed word
+        String reversed = "";
+        
+        //removes the word from the stack
+        for(int i = 0; i < word.length(); i++){
+            reversed = reversed + check.pop();
+        }
+        
+        //if the word does not contain a dollar sign
+        //the word is not of the type W$W
+        if(!reversed.contains("$")){
+            return false;
+        }
+        //if the word is the same as itself reversed
+        //the word is of the type W$W
+        else if(word.equals(reversed)){
+            return true;
+        }
+        //if the word is not the same as itself reversed
+        //the word is not of the type W$W
+        else{
+            return false;
+        }
+        
+    }
+    
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -55,6 +93,7 @@ public class Test {
         System.out.println("Value of number at index 3: " + list2.get(3));
         
         //tests the String stack
+        System.out.println(isW$W("cat$tac"));
         
         
     }
