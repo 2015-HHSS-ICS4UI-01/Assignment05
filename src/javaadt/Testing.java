@@ -16,6 +16,7 @@ public class Testing {
     public static void main(String[] args) {
         MyLinkedList list = new MyLinkedList();
         list.add(6);
-        list.printList();
+        list.get(0);
+        list.get(1);
     }
 }
