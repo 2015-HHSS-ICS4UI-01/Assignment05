@@ -31,7 +31,14 @@ public class OrderedList {
     }
     
     public void remove(int n){
-        
+        Node node = new Node(n);
+        Node temp;
+        if(numItems==1){
+            head=null;
+            numItems--;
+        }else{
+            
+        }
     }
     
     public int size(){
