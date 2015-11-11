@@ -20,19 +20,13 @@ public class MyLinkedList {
 
     public void add(int num) {
         Node node = new Node(num);
-        if (numitems == 0) {
+        if (numitems == 0 || node.getNum() < head.getNum()) {
             node.setNext(head);
             head = node;
         } else {
-            for (int i = 0; i < numitems; i++) {
-                
-            }
-            Node current = this.head;
-//            for (int i = 0; i < index - 1; i++) {
-//                current = current.getNext();
-//            }
-            node.setNext(current.getNext());
-            current.setNext(node);
+            int index = 1;
+            Node check = head.getNext();
+            
         }
         numitems++;
     }
@@ -40,34 +34,33 @@ public class MyLinkedList {
     public void remove(int num) {
         Node node = new Node(num);
         for (int i = 0; i < numitems; i++) {
-            
         }
     }
 
-    public int size() {
-        return numitems;
+    public void size() {
+        System.out.println(numitems);
     }
 
-    public boolean isEmpty() {
+    public void isEmpty() {
         if (numitems > 0) {
-            return false;
+            System.out.println(false);
+        } else {
+            System.out.println(true);
         }
-        return true;
     }
 
-    public int get(int index) {
-        Node node = new Node(index);
-        for (int i = 0; i < index; i++) {
-            node = node.getNext();
-        }
-        return node.getNum();
-    }
-
-    public void printList() {
-        Node node = this.head;
-        while (node != null) {
+    public void get(int index) {
+        Node node = head;
+        if (index >= numitems) {
+            System.out.println("null");
+        } else if (index < numitems) {
+            for (int i = 0; i < numitems; i++) {
+                if (i == index) {
+                    break;
+                }
+                node = node.getNext();
+            }
             System.out.println(node.getNum());
-            node = node.getNext();
         }
     }
 }
