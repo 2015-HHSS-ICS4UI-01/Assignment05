@@ -58,11 +58,13 @@ public class OrderedList {
             n = n.getNext();
         }
     }
-/**
- * Determine whether the list is empty or not
- * @return true or false, depending on numItems
- */
-    public boolean isEmpty() { 
+
+    /**
+     * Determine whether the list is empty or not
+     *
+     * @return true or false, depending on numItems
+     */
+    public boolean isEmpty() {
         //if empty return true, else return false
         if (numItems == 0) {
             return true;
@@ -70,10 +72,12 @@ public class OrderedList {
             return false;
         }
     }
-/**
- * Removes a node that contains the number the user wants to remove
- * @param num 
- */
+
+    /**
+     * Removes a node that contains the number the user wants to remove
+     *
+     * @param num the number to remove
+     */
     public void remove(int num) {
         Node n = head;
         for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) {
@@ -88,6 +92,12 @@ public class OrderedList {
         }
     }
 
+    /**
+     * Get the number at a certain point in the array
+     *
+     * @param index spot at which the number is in the list of nodes
+     * @return the number of the node specified by the index
+     */
     public int getInt(int index) {
         Node n = head;
         for (int i = 0; i < index; i++) {
@@ -96,6 +106,11 @@ public class OrderedList {
         return n.getNum();
     }
 
+    /**
+     * Get the size of the list of nodes
+     *
+     * @return the amount of items in the list
+     */
     public int size() {
         return numItems;
     }
