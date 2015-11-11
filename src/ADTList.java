@@ -8,7 +8,7 @@
  * @author kobed6328
  */
 public class ADTList {
-    private int[] array = new int[1];
+    private int[] array = new int[10];
     int lastValidIndex = 0;
     
     /**
