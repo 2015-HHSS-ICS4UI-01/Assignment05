@@ -10,10 +10,17 @@
 public class Test {
 
     /**
-     * Checks a string to see if it is of the type w$w (e.g. cat$tac)
-     * @param word the word to check
+     * Checks a string to see if it is of the type w$w (e.g. cat$tac).
+     * @param word the word to check.
      */
-    static boolean isW$W(String word){
+    static boolean isW$W(String word){   
+        //if the word does not contain a dollar sign
+        //the word is not of the type W$W
+        if(!word.contains("$")){
+            return false;
+        }
+        
+        //the Stack that will create the reverse of the entered word
         Stack check = new Stack();
         
         //reverses the word by adding it to the stack
@@ -24,19 +31,14 @@ public class Test {
         //String to hold the reversed word
         String reversed = "";
         
-        //removes the word from the stack
+        //removes the reversed word from the stack
         for(int i = 0; i < word.length(); i++){
             reversed = reversed + check.pop();
         }
         
-        //if the word does not contain a dollar sign
-        //the word is not of the type W$W
-        if(!reversed.contains("$")){
-            return false;
-        }
         //if the word is the same as itself reversed
         //the word is of the type W$W
-        else if(word.equals(reversed)){
+        if(word.equals(reversed)){
             return true;
         }
         //if the word is not the same as itself reversed
@@ -62,15 +64,14 @@ public class Test {
         list.add(20);
         list.add(11);
         list.add(9);
+        list.remove(11);
         
-        // list.printList();
-
+        list.printList();
         // System.out.println("List Size: " + list.size());
         // System.out.println("Empty? " + list.isEmpty());
         // System.out.println("Value of Node at index 3: " + list.get(3));
          
         //tests the Array List
-        
         MyArrayList list2 = new MyArrayList();
         
         list2.add(0,2);
@@ -86,14 +87,13 @@ public class Test {
         list2.add(0,14);
         list2.remove(3);
         
-        list2.printList();
-        
-        System.out.println("List Size: " + list2.size());
-        System.out.println("Empty? " + list.isEmpty());
-        System.out.println("Value of number at index 3: " + list2.get(3));
+        //list2.printList();
+        //System.out.println("List Size: " + list2.size());
+        //System.out.println("Empty? " + list2.isEmpty());
+        //System.out.println("Value of number at index 3: " + list2.get(3));
         
         //tests the String stack
-        System.out.println(isW$W("cat$tac"));
+        //System.out.println("Is it W$W? " + isW$W("pineapple$elppaenip"));
         
         
     }

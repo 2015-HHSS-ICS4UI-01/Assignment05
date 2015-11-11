@@ -22,32 +22,32 @@ public class Stack {
     
     /**
      * Get the size of the Stack.
-     * @return the number of items in the Stack.
+     * @return the number of letters in the Stack.
      */
     public int size(){
         return numChars;
     }
     
     /**
-     * Get the first node in the Stack.
-     * @return the head Node of the Stack.
+     * Get the first letter in the Stack.
+     * @return the first letter of the Stack.
      */
     public char peek(){
         return word.charAt(0);
     }
     
     /**
-     * Adds a character to the top of the Stack.
-     * @param n the value of the Node being added.
+     * Adds a letter to the top of the Stack.
+     * @param c the letter that is being added.
      */
-    public void push(char n){
-        word = n + word;
+    public void push(char c){
+        word = c + word;
         numChars++;
     }
     
     /**
-     * Removes a Node from the top of the Stack.
-     * @return the Node that was removed.
+     * Removes a letter from the top of the Stack.
+     * @return the letter that was removed.
      */
     public char pop(){
         char temp = word.charAt(0);
@@ -56,6 +56,10 @@ public class Stack {
         return temp;
     }
     
+    /**
+     * Check if the list is empty.
+     * @return whether or not the list has letters in it.
+     */
     public boolean isEmpty(){
         if(numChars == 0){
             return true;
