@@ -13,8 +13,8 @@ public class Node {
     public Node prev;
     
     /**
-     * Constructor for the Nodes.
-     * @param n the number held by the Node.
+     * Constructor for the nodes.
+     * @param n the number held by the node.
      */
     public Node(int n){
         this.num = n;
@@ -23,9 +23,9 @@ public class Node {
     }
     
     /**
-     * Constructor for the Nodes given two variables.
-     * @param n the number held by the Node.
-     * @param next the Node that is after the Node being constructed.
+     * Constructor for the nodes given two variables.
+     * @param n the number held by the node.
+     * @param next the node that is after the node being constructed.
      */
     public Node(int n, Node next){
         this.num = n;

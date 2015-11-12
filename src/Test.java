@@ -20,7 +20,7 @@ public class Test {
             return false;
         }
         
-        //the Stack that will create the reverse of the entered word
+        //the stack that will create the reverse of the entered word
         Stack check = new Stack();
         
         //reverses the word by adding it to the stack

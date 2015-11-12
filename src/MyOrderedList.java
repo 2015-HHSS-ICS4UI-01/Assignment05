@@ -20,76 +20,77 @@ public class MyOrderedList {
     }
     
     /**
-     * Adds a Node with a specified value to the list, in increasing numerical order.
-     * @param num the number to add.
+     * Adds a node with a specified value to the list, in increasing numerical order.
+     * @param num the value of the node to add.
      */
     public void add(int num){
         //adding to an empty list
         if(numItems == 0){
-            //the new Node is the first Node in the list
+            //the new node is the first node in the list
             head = new Node(num);
-            //a Node was added
+            //a node was added
             numItems++;
-        //adding to a list with one Node
+        //adding to a list with one node
         }else if(numItems == 1){
-            //if the Node in the list is larger than the new Node
-            //the new Node becomes the first Node in the list
-            //and the original first Node becomes the second Node
+            //if the node in the list is larger than the new Node
+            //the new node becomes the first node in the list
+            //and the original first node becomes the second Node
             if(head.getNum() > num){
                 Node temp = head;
                 head = new Node(num);
                 head.setNext(temp);
                 temp.setPrev(head);
             }
-            //if the Node in the list is less than the new Node
-            //the new Node becomes the second Node in the list
+            //if the node in the list is less than the new node
+            //the new node becomes the second node in the list
             else if(head.getNum() < num){
                 Node n = new Node(num);
                 head.setNext(n);
                 n.setPrev(head);
             }
             
-            //a Node was added
+            //a node was added
             numItems++;
         }
-        //adding to a list with more than one Node
+        //adding to a list with more than one node
         else{
             Node current = head;
             int i = 0;
 
-            //if the first Node is larger than the new Node
-            //the new Node becomes the first Node in the list
-            //and the original first Node becomes the second Node
+            //if the first node is larger than the new node
+            //the new node becomes the first node in the list
+            //and the original first node becomes the second node
             if(head.getNum() > num){
                 Node temp = head;
                 head = new Node(num);
                 head.setNext(temp);
                 temp.setPrev(head);
-            }//if the first Node is less than the new Node
-            //find the Node that is larger than the new Node
+            }
+            //if the first node is less than the new node
+            //find the node that is larger than the new node
             else{
-                //search the list of Nodes until the end is reached
+                //search the list of nodes until the end is reached
                 while(i < numItems){
                     current = current.getNext();
                     i++;
                     
-                    //if the current Node's next Node is null
-                    //or if the current Node's number is equal to user's number
+                    //if the current node's next node is null
+                    //or if the current node is larger than the new node
                     //stop checking the list
                     if(current.getNext() == null || current.getNum() > num){
                         break;
                     }
                 }
-                //the Node to be added to the list
+                //the node to be added to the list
                 Node n = new Node(num);
             
-                //if the list's last Node has a value less than user's number
-                //add number's Node to the end of the list
+                //if the list's last node has a value less than user's number
+                //add number's node to the end of the list
                 if(current.getNext() == null && current.getNum() < num){
                     current.setNext(n);
                     n.setPrev(current);
-                }//if a Node in the middle of the list was stopped on
-                //add the new Node before that Node
+                }//if a node in the middle of the list was stopped on
+                //add the new node before that Node
                 else{
                     n.setPrev(current.getPrev());
                     n.setNext(current);
@@ -98,13 +99,13 @@ public class MyOrderedList {
                 }
                 
             } 
-            //a Node was added
+            //a node was added
             numItems++; 
         }
     }
     
     /**
-     * Print out the list of Nodes.
+     * Print out the list of nodes.
      */
     public void printList(){
         Node n = head;
@@ -115,68 +116,68 @@ public class MyOrderedList {
     }
     
     /**
-     * Removes a Node with a specified value.
-     * @param num the number to remove from the list.
+     * Removes a node with a specified value.
+     * @param num the value of the node to remove from the list.
      */
     public void remove(int num){
         
-        //if there are no Nodes in the list
+        //if there are no nodes in the list
         if(numItems == 0){
             //nothing can be removed; do nothing
         }
-        //if the Node to be removed is at the beginning of the list
-        //remove the first Node
+        //if the node to be removed is at the beginning of the list
+        //remove the first node
         else if(head.getNum() == num){
             head.getNext().setPrev(null);
             head = head.getNext(); 
             //a Node was removed
             numItems--;
         }
-        //if the Node to be removed is not the first Node
-        //find the Node to remove in the list
+        //if the node to be removed is not the first node
+        //find the node to remove in the list
         else{
             Node check = head;
             int i = 0;
 
-            //search through the list of Nodes until the end is reached
+            //search through the list of nodes until the end is reached
             while(i < numItems){
                 check = check.getNext();
                 i++;
                 
-                //if the Node being checked is larger than the Node to remove
-                //or if there is no Node after the current Node
+                //if the node being checked is larger than the node to remove
+                //or if there is no node after the current node
                 //stop checking the list
                 if(check.getNum() >= num || check.getNext() == null){
                     break;
                 }
             }
 
-            //if the Node was not in the list
+            //if the node was not in the list
             if(check.getNum() != num){
                 //do nothing
             }
-            //if the Node was at the end of the list
-            //remove the last Node
+            //if the node was at the end of the list
+            //remove the last node
             else if(check.getNext() == null && check.getNum() == num){
                 check.getPrev().setNext(null);
                 check.setPrev(null);
             }
-            //if the Node was in the middle of the list
-            //remove that Node
+            //if the node was in the middle of the list
+            //remove that node
             else{
                 check.getPrev().setNext(check.getNext());
                 check.getNext().setPrev(check.getPrev());
             }
             
-            //a Node was removed
+            //a node was removed
             numItems--;
         }  
     }
     
     /**
-     * Get the value of a Node at a specified index.
-     * @param index the position of the Node to check.
-     * @return the value of the Node.
+     * Get the value of a node at a specified index.
+     * @param index the position of the node to check.
+     * @return the value of the node.
      */
     public int get(int index){
         Node n = head;
@@ -187,8 +188,8 @@ public class MyOrderedList {
     }
     
     /**
-     * Get the total size of the List.
-     * @return the number of Nodes in the List.
+     * Get the total size of the list.
+     * @return the number of nodes in the list.
      */
     public int size(){
         return numItems;
@@ -196,7 +197,7 @@ public class MyOrderedList {
     
     /**
      * Check if the list is empty or not.
-     * @return whether or not the list has Nodes in it.
+     * @return whether or not the list has nodes in it.
      */
     public boolean isEmpty(){
         if(numItems == 0){
