@@ -14,21 +14,25 @@ public class Testing {
      */
     public static void main(String[] args) {
            OrderedList list = new OrderedList();
+           list.add(new Node(7));
+           list.add(new Node(2));
+           list.add(new Node(2));
            list.add(new Node(10));
            list.add(new Node(8));
-           list.add(new Node(6));
-           list.add(new Node(4));
+           list.add(new Node(3));
            
            list.printList();
-           list.get(2);
-           list.size();
-           list.isEmpty();
-           list.remove(7);
-           System.out.println("");
-//           list.add(new Node(11));
-        
+          System.out.println("");
+          list.remove(2);
+//          list.get(3);
+//           list.isEmpty();
+//           list.size();
+          list.printList();
+//           list.add(new Node(3));
+//           
+//        
+//           
            
-           list.printList();
            
     
         
