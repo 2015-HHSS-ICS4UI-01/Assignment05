@@ -26,6 +26,7 @@ public class A5Q1 {
 
         list.add(new Node (5));
         list.printList();
+        
         System.out.println("--");
         
         list.remove(2);
