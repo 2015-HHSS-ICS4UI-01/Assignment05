@@ -15,16 +15,17 @@ public class testing {
     public static void main(String[] args) {
         ArrayList arrayList = new ArrayList();
         arrayList.add(0, 1);
-        arrayList.add(5, 5);
+        arrayList.add(1, 5);
+        arrayList.add(2, 3);
+        arrayList.add(1, 2);
         arrayList.printList();
-        System.out.println(isValidWord("hello$olleh"));
+        System.out.println(isValidWord("$"));
     }
     
     public static boolean isValidWord(String word)
     {
         Stack stack = new Stack();
-        String s = "test$tset";
-        String[] words = s.split("\\$", 2);
+        String[] words = word.split("\\$", 2);
         for (int x = 0; x < words[0].length(); x++) {
             {
                 stack.push(new CharNode(words[0].charAt(x)));

@@ -41,15 +41,15 @@ public class ArrayList {
             numItems++;
         } else if (index < 0) { //set the index to the beginning if its less than 0
             index = 0;
-        } else if (index >= array.length) { //set the index to the end if its greater than the length
-            index = array.length - 1;
+        } else if (index > numItems) { //set the index to the end if its greater than the length
+            index = numItems;
+        } else {
+            for (int x = array.length - 1; x > index; x--) { //move all items from the position index forward one spot
+                array[x] = array[x - 1];
+            }
+            array[index] = num; //set the spot at the given index equal to the number
+            numItems++; //increase the number of items
         }
-        for (int x = array.length - 1; x > index; x--) { //move all items from the position index forward one spot
-            array[x] = array[x - 1];
-        }
-        array[index] = num; //set the spot at the given index equal to the number
-        numItems++; //increase the number of items
-
         if (numItems == array.length) { //if the array is full, double it
             doubleArray();
         }
@@ -64,6 +64,7 @@ public class ArrayList {
         for (int x = index; x < array.length - 2; x++) {
             array[x] = array[x + 1];
         }
+        numItems--;
     }
 
     public int size() {
@@ -79,7 +80,7 @@ public class ArrayList {
     }
 
     public void printList() {
-        for (int x = 0; x < array.length; x++) {
+        for (int x = 0; x < numItems; x++) {
             System.out.println(array[x]);
         }
     }
