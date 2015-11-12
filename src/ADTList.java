@@ -75,12 +75,7 @@ public class ADTList {
     }
 
     public int get(int index) {
-        if (index > 0 && index < array.length) {
-            return array[index];
-        } 
-//        else {
-//            return Integer.toString("YOU SUCK");
-//        }
+        return array[index];
     }
 
     public void printList() {
