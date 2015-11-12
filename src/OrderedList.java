@@ -73,37 +73,37 @@ public class OrderedList {
      */
     public void remove(int num)
     {
-        // while the number to be removed is the head, make the next element the head and decrease the length by one
-        while (head != null && head.getValue() == num)
+        // if the number to be removed is the head, make the next element the head and decrease the length by one
+        if (head != null && head.getValue() == num)
         {
             head = head.getChildNode();
             length --;
         }
-        
-        Node curNode = head;
-        // we want to iterate through the initial length of the list, even when it's changed, so this is the length which will be modified
-        int tempLength = length;
-        // loop until the last valid node is reached (length-1) since the actual last element is null
-        for (int i = 0; i < length-1; i ++)
+        // otherwise, if the number to be removed is somewhere in the middle of the array
+        else
         {
-            // the children of the removed node must be appended to the previous node, but we can only know if a node is to be removed when it is the curNode. However, since the head has already been checked, we can start with it but check the next node in the list
-            Node nextNode = curNode.getChildNode();
-            // if the next node doesn't match the number to be removed, advance the current node
-            if (nextNode.getValue() != num)
+            Node curNode = head;
+            // loop until the last valid node is reached (length-1) since the actual last element is null, and the lookahead checks one node in advance
+            for (int i = 0; i < length-1; i ++)
             {
-                curNode = curNode.getChildNode();
-            }
-            // otherwise, maintain the current node, and remove the next node
-            else
-            {
-                // set the current node's children to the next node's children (thereby removing the nextNode)
-                curNode.setChildNode(nextNode.getChildNode());
-                // decrease the tempLength instead of the length variable, since decreasing the length variable will prematurely exit the loop, as we want to maintain the current node
-                tempLength --;
+                // the children of the removed node must be appended to the previous node, but we can only know if a node is to be removed when it is the curNode. However, since the head has already been checked, we can start with it but check the next node in the list, and keep checking one node in advance
+                Node nextNode = curNode.getChildNode();
+                // if the next node doesn't match the number to be removed, advance the current node
+                if (nextNode.getValue() != num)
+                {
+                    curNode = curNode.getChildNode();
+                }
+                // otherwise, maintain the current node, and remove the next node, and break the loop
+                else
+                {
+                    // set the current node's children to the next node's children (thereby removing the nextNode)
+                    curNode.setChildNode(nextNode.getChildNode());
+                    // decrease length by one since item was removed
+                    length --;
+                    break;
+                }
             }
         }
-        // update the length to the length that was shortened
-        length = tempLength;
     }
     
     /**
@@ -132,7 +132,6 @@ public class OrderedList {
             System.out.println(curNode.getValue());
             curNode = curNode.getChildNode();
         }
-        System.out.println("");
     }
     
 }
