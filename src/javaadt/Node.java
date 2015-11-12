@@ -1,25 +1,29 @@
+package javaadt;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaadt;
 
 /**
  *
- * @author thomt9963
+ * @author lamonta
  */
 public class Node {
     private int num;
     private Node next;
+    private Node prev;
     
     public Node(int n){
         this.num = n;
         next = null;
+        prev = null;
     }
     
     public Node(int n, Node next){
         this.num = n;
         this.next = next;
+        
     }
     
     /**
@@ -30,12 +34,20 @@ public class Node {
         return this.next;
     }
     
+    public Node getPrev() {
+        return this.prev;
+    }
+    
     /**
      * Sets the node this is pointing to
      * @param n the new node to point to
      */
     public void setNext(Node n){
         this.next = n;
+    }
+    
+    public void setPrev(Node n) {
+        this.prev = n;
     }
     
     /**
