@@ -16,6 +16,7 @@ public class Main {
         ADTList list = new ADTList();
         list.add(0,0);
         list.add(2,1);
+        list.remove(-1);
         list.print();
     }
     

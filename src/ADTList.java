@@ -17,8 +17,8 @@ public class ADTList {
      */
     public void remove(int index)
     {
-        // if the index is invalid, don't add
-        if (index < 0 || index > lastValidIndex)
+        // if the index is invalid for removal, don't add
+        if (index < 0 || index >= lastValidIndex)
         {
             return;
         }
@@ -39,7 +39,7 @@ public class ADTList {
      */
     public void add(int index, int num)
     {
-        // if the index is invalid, don't add
+        // if the index is invalid for adding, don't add
         if (index < 0 || index > lastValidIndex)
         {
             return;
