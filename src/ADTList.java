@@ -17,15 +17,10 @@ public class ADTList {
      */
     public void remove(int index)
     {
-        // now that it's valid again, if the user inputs an index too large, make it the last valid one
-        if (index > lastValidIndex)
+        // if the index is invalid, don't add
+        if (index < 0 || index > lastValidIndex)
         {
-            index = lastValidIndex;
-        }
-        // if the index is less than 0, set it to 0
-        else if (index < 0)
-        {
-            index = 0;
+            return;
         }
         // Start at the index to remove and set it to the value of the index ahead of it
         //      the limit is decreased by one because we're looking one ahead
@@ -44,20 +39,15 @@ public class ADTList {
      */
     public void add(int index, int num)
     {
+        // if the index is invalid, don't add
+        if (index < 0 || index > lastValidIndex)
+        {
+            return;
+        }
         // if the lastValidIndex is not valid anymore, the array size is doubled
         if (lastValidIndex == array.length)
         {
             doubleArray();
-        }
-        // now that it's valid again, if the user inputs an index too large, make it the last valid one
-        if (index > lastValidIndex)
-        {
-            index = lastValidIndex;
-        }
-        // if the index is less than 0, set it to 0
-        else if (index < 0)
-        {
-            index = 0;
         }
         // if the index is not the last valid index, all of the elements are shuffled down
         for (int i = lastValidIndex; i > index; i --)
