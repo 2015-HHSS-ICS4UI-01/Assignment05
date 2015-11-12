@@ -10,6 +10,7 @@
 public class ADTList {
 
     int[] arraySize = new int[10];
+    int[] arrayTemp = new int[10];
     private int numItems;
     private boolean isEmpty;
 
@@ -43,7 +44,8 @@ public class ADTList {
                     arraySize[i] = num;
                     break;
                 } else if (i = arraySize[i]) {
-                    arraySize[i * 2]
+                    arraySize[i * 2];
+                    arrayTemp[i * 2];
                 }
             }
             numItems++;
@@ -56,7 +58,7 @@ public class ADTList {
         } else {
             for (int i = 0; i < arraySize.length; i++) {
                 arraySize[i] == null;
-                int[] arrayTemp = new int[arraySize];
+
                 for (int i = 0; i < arraySize.length; i++) {
                     if (arraySize[i] == null) {
                         i++;
