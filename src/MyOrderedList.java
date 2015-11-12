@@ -180,11 +180,15 @@ public class MyOrderedList {
      * @return the value of the node.
      */
     public int get(int index){
-        Node n = head;
-        for(int i = 0; i < index; i++){
-            n = n.getNext();
+        if(index < 0 || index > numItems){
+            throw new IndexOutOfBoundsException();
+        }else{
+            Node n = head;
+            for(int i = 0; i < index; i++){
+                n = n.getNext();
+            }
+            return n.getNum();
         }
-        return n.getNum();
     }
     
     /**

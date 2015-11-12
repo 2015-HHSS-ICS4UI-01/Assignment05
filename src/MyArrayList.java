@@ -139,7 +139,11 @@ public class MyArrayList {
      * @return the number at the specific position
      */
     public int get(int index){
-        return nums[index];
+        if(index < 0 || index > numItems){
+            throw new IndexOutOfBoundsException();
+        }else{
+            return nums[index];
+        }
     }
     
     /**
