@@ -180,7 +180,10 @@ public class MyOrderedList {
      * @return the value of the node.
      */
     public int get(int index){
+        //if index is greater than the total amount of numbers in the list
+        //or if index is negative
         if(index < 0 || index > numItems){
+            //throw an error
             throw new IndexOutOfBoundsException();
         }else{
             Node n = head;

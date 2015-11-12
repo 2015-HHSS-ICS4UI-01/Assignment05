@@ -139,7 +139,10 @@ public class MyArrayList {
      * @return the number at the specific position
      */
     public int get(int index){
-        if(index < 0 || index > numItems){
+        //if index is greater than the total number of spots in the array
+        //or if index is negative
+        if(index < 0 || index > nums.length - 1){
+            //throw an error
             throw new IndexOutOfBoundsException();
         }else{
             return nums[index];
