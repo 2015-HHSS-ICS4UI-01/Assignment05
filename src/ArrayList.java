@@ -18,44 +18,36 @@ public class ArrayList {
      * Creates an Empty List
      */
     public ArrayList() {
+        tailIndex = -1;
     }
 
     /**
      * Adds a node with a specific number in an ordered list
      *
+     * @param index
      * @param num
      */
-    public void add(int num) {
-
-        if (arrList.length == 0) { //if the list is empty
+    public void add(int index, int num) {
+        if (tailIndex < 0) { //if the list is empty
             arrList[0] = num;
-            tailIndex = 0;
-        } else if (arrList[0] > num) { //if the number to be added is smaller than the first number in the ordered list
-            arrList[1] = arrList[0];
-            arrList[0] = num;
-            tailIndex = 1;
         } else {
             if (tailIndex == arrList.length - 1) {
                 arrList = Arrays.copyOf(arrList, arrList.length * 2);
+            }
+            if (tailIndex < index) {
+                arrList[tailIndex + 1] = num;
             } else {
-                if (arrList[tailIndex] <= num) {
-                    arrList[tailIndex + 1] = num;
-                } else {
-                    for (int j = 0; j < arrList.length - 1; j++) { //for each spot in the list except the last one(becuase the second last Node.getNext = the last node)
-                        if (arrList[j] > num) {
-                            for (int i = arrList.length; i >= j; i--) {
-                                arrList[i + 1] = arrList[i];
-                                tailIndex = i + 1;
-                            }
-                        }
-                    }
+                for (int i = tailIndex; i >= index; i--) {
+                    arrList[i + 1] = arrList[i];
                 }
+                arrList[index] = num;
             }
         }
+        tailIndex++;
     }
 
     public void printList() {
-        for (int i = 0; i < arrList.length; i++) {
+        for (int i = 0; i <= tailIndex; i++) {
             System.out.println(arrList[i]);
         }
     }

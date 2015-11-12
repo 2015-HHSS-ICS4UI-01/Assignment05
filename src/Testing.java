@@ -13,17 +13,17 @@ public class Testing {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList list = new ArrayList();
-        list.add(10);
-        list.add(9);
-        list.add(8);
-        list.add(7);
-        list.add(6);
-        list.add(5);
-        list.add(4);
-        list.add(3);
-        list.add(2);
-        list.add(1);
-        list.printList();
+        Stack stack = new Stack();
+        String word = "cat$tac";
+        String words[] = word.split("\\$");
+        String reversedStr = "";
+        for (int i = 0; i < words[0].length(); i++) {
+            stack.push(new CharNode(words[0].charAt(i)));
+        }
+        for (int j = 0; j < stack.size(); j++) {
+            reversedStr += stack.pop().getChar();
+        }
+        System.out.println(stack.size());
+        System.out.println(reversedStr);
     }
 }
