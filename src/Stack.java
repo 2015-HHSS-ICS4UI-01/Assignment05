@@ -35,20 +35,15 @@ public class Stack {
      * @return the last node added (head)
      */
     public CharNode pop() {
-        if (numItems > 1) {
-            //create a temp node of the node to be removed
+        CharNode n = head;
+        if (numItems > 0) {
             CharNode temp = head;
-            // set the new head of the stack as the node added before the last node
             head = head.getNext();
-            // decrease number of items because a node has been removed
             numItems--;
             return temp;
-        } else if (numItems == 1) {
-            numItems = 0;
-            return head;
-
         }
         return null;
+        
     }
 
     public int size() {

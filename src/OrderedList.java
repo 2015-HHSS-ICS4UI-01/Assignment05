@@ -80,15 +80,25 @@ public class OrderedList {
      */
     public void remove(int num) {
         Node n = head;
-        for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) {
+        int numItemsRemoved = 0;
+        if (numItems == 1) {
             if (num == head.getNum()) {
                 head = head.getNext();
-                break;
-            } else if (n.getNext().getNum() == num) {
-                n.setNext(n.getNext().getNext());
-                break;
+                numItemsRemoved++;
             }
-            n = n.getNext();
+        } else {
+            for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) {
+                if (num == head.getNum()) {
+                    head = head.getNext();
+                    numItemsRemoved++;
+                    break;
+                } else if (n.getNext().getNum() == num) {
+                    n.setNext(n.getNext().getNext());
+                    numItemsRemoved++;
+                    break;
+                }
+                n = n.getNext();
+            }
         }
     }
 
