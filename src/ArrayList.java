@@ -8,12 +8,12 @@
  *
  * @author Jafer
  */
-public class ADTList {
+public class ArrayList {
 
     private int[] array;
     private int numItems;
 
-    public ADTList() {
+    public ArrayList() {
         array = new int[10]; //initialize 10-item array
         numItems = 0; //0 items to begin with
     }
@@ -43,13 +43,13 @@ public class ADTList {
             index = 0;
         } else if (index >= array.length) { //set the index to the end if its greater than the length
             index = array.length - 1;
-        } else {
-            for (int x = array.length - 1; x > index; x--) { //move all items from the position index forward one spot
-                array[x] = array[x - 1];
-            }
-            array[index] = num; //set the spot at the given index equal to the number
-            numItems++; //increase the number of items
         }
+        for (int x = array.length - 1; x > index; x--) { //move all items from the position index forward one spot
+            array[x] = array[x - 1];
+        }
+        array[index] = num; //set the spot at the given index equal to the number
+        numItems++; //increase the number of items
+
         if (numItems == array.length) { //if the array is full, double it
             doubleArray();
         }
