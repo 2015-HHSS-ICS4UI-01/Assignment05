@@ -16,7 +16,17 @@ public class Testing {
     public static void main(String[] args) {
         MyLinkedList list = new MyLinkedList();
         list.add(6);
+        list.add(11);
+        list.add(9);
+        
         list.get(0);
         list.get(1);
+        list.get(2);
+        
+        list.remove(11);
+        
+        list.get(0);
+        list.get(1);
+        list.get(2);
     }
 }
