@@ -46,49 +46,53 @@ public class MyLinkedList {
     }
 
     public void remove(int num) {
-        Node node = new Node(num), next = head;
+        Node node = head;
         int index = 0;
         for (int i = 0; i < numitems; i++) {
-            if (node.getNum() == next.getNum()) {
+            if (num == node.getNum()) {
                 break;
             }
             index++;
-            next = next.getNext();
+            node = node.getNext();
         }
         if (index != numitems) {
-            Node temp = head;
             if (numitems == 1) {
                 head = null;
-            } else if (index + 1 == numitems) {
-                node.setNext(null);
-            }
-        }
-    }
-
-    public void size() {
-        System.out.println(numitems);
-    }
-
-    public void isEmpty() {
-        if (numitems > 0) {
-            System.out.println(false);
-        } else {
-            System.out.println(true);
-        }
-    }
-
-    public void get(int index) {
-        Node node = head;
-        if (index >= numitems || index < 0) {
-            System.out.println("null");
-        } else if (index < numitems) {
-            for (int i = 0; i < numitems; i++) {
-                if (i == index) {
-                    break;
+            } else if (index == 0) {
+                head = head.getNext();
+            } else if (index == numitems - 1) {
+                node = head;
+                for (int i = 0; i < index - 1; i++) {
+                    node = node.getNext();
                 }
-                node = node.getNext();
+                node.setNext(null);
+            } else {
+                node = head;
+                for (int i = 0; i < index - 1; i++) {
+                    node = node.getNext();
+                }
+                node.setNext(node.getNext().getNext());
             }
-            System.out.println(node.getNum());
+            numitems--;
         }
+    }
+
+    public int size() {
+        return numitems;
+    }
+
+    public boolean isEmpty() {
+        if (numitems > 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public int get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.getNext();
+        }
+        return node.getNum();
     }
 }
