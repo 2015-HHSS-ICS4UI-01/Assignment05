@@ -53,17 +53,23 @@ public class ADTList {
     public void remove(int num) {
         if (numItems == 0) {
             System.out.println("no number to give back");
-        }else{
-            
-            
-            
-            
+        } else {
+            for (int i = 0; i < arraySize.length; i++) {
+                arraySize[i] == null;
+                int[] arrayTemp = new int[arraySize];
+                for (int i = 0; i < arraySize.length; i++) {
+                    if (arraySize[i] == null) {
+                        i++;
+                    }
+                    arraySize[i] == arrayTemp[i];
+                }
+                break;
+            }
         }
-
     }
 
     public int getInt(int index) {
-        return arraySize[index + 1];
+        return arraySize[index];
     }
 
     public int size() {
