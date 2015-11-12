@@ -66,10 +66,10 @@ public class Test {
         list.add(9);
         list.remove(11);
         
-        list.printList();
-        // System.out.println("List Size: " + list.size());
-        // System.out.println("Empty? " + list.isEmpty());
-        // System.out.println("Value of Node at index 3: " + list.get(3));
+        //list.printList();
+        //System.out.println("List Size: " + list.size());
+        //System.out.println("Empty? " + list.isEmpty());
+        //System.out.println("Value of Node at index 3: " + list.get(3));
          
         //tests the Array List
         MyArrayList list2 = new MyArrayList();
@@ -85,9 +85,11 @@ public class Test {
         list2.add(0,54);
         list2.add(0,123);
         list2.add(0,14);
+        list2.add(5,123);
         list2.remove(3);
+        list2.add(100,12312);
         
-        //list2.printList();
+        list2.printList();
         //System.out.println("List Size: " + list2.size());
         //System.out.println("Empty? " + list2.isEmpty());
         //System.out.println("Value of number at index 3: " + list2.get(3));

@@ -27,38 +27,40 @@ public class MyArrayList {
      * @param index the position to place the number.
      * @param n the number to add.
      */
-    public void add(int index, int num){
-        //if the total amount of numbers in the array is equal to its length
-        //make an array twice the size of the current one
-        if(numItems == nums.length){
-            int[] newNums = new int[nums.length*2];
-            for(int i = 0; i < newNums.length; i++){
-                //add all numbers from the old array to the new one
-                if(i < nums.length){
-                    newNums[i] = nums[i];
-                }
-                //fill the array's new empty spaces with zeros
-                else if(i >= nums.length){
-                    newNums[i] = 0;
-                }
-            }
-            //make the new array the array to add numbers to
-            nums = newNums;
-        }
+    public void add(int index, int num){     
         //if user tries to add a number at a spot not in the array, or a 0
         if(index > nums.length || num == 0){
             //do nothing
         }
         //adding to an empty spot or an empty list
         else if(nums[index] == 0 || numItems == 0){
+            //if the total amount of numbers in the list is equal to its length
+            //make an list twice the size of the current one
+            if(numItems == nums.length){
+                int[] newNums = new int[nums.length*2];
+                for(int i = 0; i < newNums.length; i++){
+                    //add all numbers from the old list to the new one
+                    if(i < nums.length){
+                        newNums[i] = nums[i];
+                    }
+                    //initialize the rest of the new list
+                    else if(i >= nums.length){
+                        newNums[i] = 0;
+                    }
+                }
+                //make the new array the array to add numbers to
+                nums = newNums;
+            }
+            //add the number into the specified location
             nums[index] = num;
+            //a number has been added
             numItems++;
         }
         //adding to a spot that is occupied by another number
         else{
             for(int i = nums.length - 1; i >= index; i--){
-                //if there is no room to move the last number of the array
-                //make an array twice the size of the current one
+                //if there is no room to move the last number of the list
+                //make a list twice the size of the current one
                 if(i == nums.length - 1 && nums[nums.length - 1] != 0){
                     int[] newNums = new int[nums.length*2];
                     for(int j = 0; j < newNums.length; j++){
@@ -116,6 +118,8 @@ public class MyArrayList {
             return;
         }
         
+        //shift any numbers that come after the number being removed
+        //one spot to the left
         for(int i = index + 1; i < nums.length; i++){
             nums[i-1] = nums[i];
         }
