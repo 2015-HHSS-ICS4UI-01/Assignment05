@@ -44,8 +44,21 @@ public class ADTList {
                     arraySize[i] = num;
                     break;
                 } else if (i = arraySize[i]) {
-                    arraySize[i * 2];
-                    arrayTemp[i * 2];
+
+                    for (int i = 0; i < arraySize.length; i++) {
+                        if (arraySize[i] == null) {
+                            i++;
+                        }
+                        arraySize[i] == arrayTemp[i];
+                    }
+                    arraySize = new int [arraySize * 2];
+                    or (int i = 0; i < arraySize.length; i++) {
+                        if (arraySize[i] == null) {
+                            i++;
+                        }
+                        arraySize[i] == arrayTemp[i];
+                    }
+
                 }
             }
             numItems++;
