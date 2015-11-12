@@ -89,7 +89,7 @@ public class Test {
         list2.remove(3);
         list2.add(100,12312);
         
-        list2.printList();
+        //list2.printList();
         //System.out.println("List Size: " + list2.size());
         //System.out.println("Empty? " + list2.isEmpty());
         //System.out.println("Value of number at index 3: " + list2.get(3));
