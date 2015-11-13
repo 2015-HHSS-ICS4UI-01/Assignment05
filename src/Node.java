@@ -17,11 +17,6 @@ public class Node {
         next = null;
     }
 
-    public Node(int n, Node next) {
-        this.num = n;
-        this.next = next;
-    }
-
     /**
      * Get the node that is next in line
      *

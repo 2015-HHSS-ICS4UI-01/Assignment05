@@ -50,6 +50,9 @@ public class OrderedList {
         numItems++; //you've added 1 item to the list
     }
 
+    /**
+     * Prints the list
+     */
     public void printList() {
         Node n = head;
         //while the node isn't null, print the number in the node
@@ -65,12 +68,7 @@ public class OrderedList {
      * @return true or false, depending on numItems
      */
     public boolean isEmpty() {
-        //if empty return true, else return false
-        if (numItems == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return numItems == 0;
     }
 
     /**
@@ -79,27 +77,30 @@ public class OrderedList {
      * @param num the number to remove
      */
     public void remove(int num) {
-        Node n = head;
-        int numItemsRemoved = 0;
-        if (numItems == 1) {
-            if (num == head.getNum()) {
-                head = head.getNext();
-                numItemsRemoved++;
+
+        Node n = head; // node to be used as a reference, to iterate through the list, etc
+        int numItemsRemoved = 0; //count of how many items have been removed
+
+        if (numItems == 1) {//if there is only one number in the list
+            if (num == head.getNum()) { //if the number in the list is equal to the number to be removed
+                head = head.getNext(); //remove the item in the list
+                numItemsRemoved++; // an item has been removed
             }
         } else {
-            for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) {
-                if (num == head.getNum()) {
-                    head = head.getNext();
-                    numItemsRemoved++;
+            for (int i = 0; i < numItems - 1 && n.getNext() != null; i++) { // for every node in the list that isn't null
+                if (num == head.getNum()) { // if the number to be removed is the first number
+                    head = head.getNext(); // same as before, making the head the next node
+                    numItemsRemoved++; //an item has been removed
                     break;
-                } else if (n.getNext().getNum() == num) {
-                    n.setNext(n.getNext().getNext());
-                    numItemsRemoved++;
+                } else if (n.getNext().getNum() == num) { //if the next node is the number to be removed
+                    n.setNext(n.getNext().getNext()); //skip over the node to be removed. set the current node as the next next node
+                    numItemsRemoved++; //a number has been removed
                     break;
                 }
-                n = n.getNext();
+                n = n.getNext(); //continue iterating through the list until one of the conditions matches
             }
         }
+        numItems -= numItemsRemoved;
     }
 
     /**
@@ -108,12 +109,16 @@ public class OrderedList {
      * @param index spot at which the number is in the list of nodes
      * @return the number of the node specified by the index
      */
-    public int getInt(int index) {
+    public int getInt(int index) throws Exception {
         Node n = head;
         for (int i = 0; i < index; i++) {
             n = n.getNext();
         }
-        return n.getNum();
+        if (index >= 0) {
+            return n.getNum();
+        } else {
+            throw new Exception("Invalid index");
+        }
     }
 
     /**

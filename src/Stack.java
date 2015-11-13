@@ -10,8 +10,8 @@
  */
 public class Stack {
 
-    private CharNode head;
-    private int numItems;
+    private CharNode head; // char last added to stack
+    private int numItems; //number of items in the stack
 
     public Stack() {
         head = null;
@@ -19,43 +19,56 @@ public class Stack {
     }
 
     /**
-     * Add CharNode to the top of stack
+     * Add CharNode to the top of the stack
      *
      * @param n the CharNode to be added
      */
     public void push(CharNode n) {
-        n.setNext(head);
-        head = n;
-        numItems++;
+
+        n.setNext(head); //set n's next as whatever the head was and then make n the head
+        head = n; // ^ make the head n
+        numItems++; //an item has been added
     }
 
     /**
-     * Remove the last node added and return it
+     * Remove the last node added to the stack and return it
      *
      * @return the last node added (head)
      */
     public CharNode pop() {
-        CharNode n = head;
+
+        //if there are items in the stack
         if (numItems > 0) {
-            CharNode temp = head;
-            head = head.getNext();
-            numItems--;
-            return temp;
+            CharNode temp = head; // temporary node to use as reference
+            head = head.getNext(); //set the head as the next node in the stack, because the last added node (head) is now removed
+            numItems--; // an item has been removed
+            return temp; //return the removed node
         }
-        return null;
-        
+        return null; //if the stack is empty, return null
     }
 
+    /**
+     * Get the number of nodes in the stack
+     *
+     * @return number of objects in stack
+     */
     public int size() {
         return numItems;
     }
 
     /**
-     * Return whether or not the stack has no added elements
+     * Determine whether the stack has items in it or not
      *
-     * @return true if the length is 0; otherwise, return false
+     * @return true for empty , false for having objects inside
      */
     public boolean isEmpty() {
         return numItems == 0;
+    }
+/**
+ * Look at the last added item
+ * @return head, the last item added
+ */
+    public CharNode peek() {
+        return head;
     }
 }
