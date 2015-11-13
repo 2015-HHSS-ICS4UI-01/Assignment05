@@ -13,6 +13,9 @@ public class ArrayList {
     private int[] array;
     private int numItems;
 
+    /**
+     * Constructor for the ArrayList; an ADT list composed entirely of arrays.
+     */
     public ArrayList() {
         array = new int[10]; //initialize 10-item array
         numItems = 0; //0 items to begin with
@@ -32,17 +35,12 @@ public class ArrayList {
     /**
      * adds a number at a specific index
      *
-     * @param index
-     * @param num
+     * @param index the index to add the number at
+     * @param num the number to add at the index
      */
-    public void add(int index, int num) {
-        if (index == 0) { //add the number to the start if its at the start
-            array[0] = num;
-            numItems++;
-        } else if (index < 0) { //set the index to the beginning if its less than 0
-            index = 0;
-        } else if (index > numItems) { //set the index to the end if its greater than the length
-            index = numItems;
+    public void add(int index, int num) throws Exception {
+        if (index < 0 || index > numItems) { //throw an exception if the index is inadmissable
+            throw new Exception("Invalid Index");
         } else {
             for (int x = array.length - 1; x > index; x--) { //move all items from the position index forward one spot
                 array[x] = array[x - 1];
@@ -55,30 +53,56 @@ public class ArrayList {
         }
     }
 
-    public void remove(int index) {
-        if (index < 0) { //set the index to the beginning if its less than 0
-            index = 0;
-        } else if (index >= array.length) { //set the index to the end if its greater than the length
-            index = array.length - 1;
+    /**
+     * removes the number at a specific index
+     *
+     * @param index
+     */
+    public void remove(int index) throws Exception {
+        if (index < 0 || index >= numItems) { //throw an exception if the index is invalid
+            throw new Exception("Invalid Index");
+        } else {
+            for (int x = index; x < array.length - 2; x++) { //iterate from the index of the number removed to the second last number in the array
+                array[x] = array[x + 1]; //shuffle the numbers forward
+            }
+            numItems--; //decrease the number of items
         }
-        for (int x = index; x < array.length - 2; x++) {
-            array[x] = array[x + 1];
-        }
-        numItems--;
     }
 
+    /**
+     * Method that returns the number of items within the list
+     *
+     * @return numItems; the number of items in the list
+     */
     public int size() {
         return numItems;
     }
 
+    /**
+     * Method that returns whether the list is empty or not
+     *
+     * @return whether number of items is 0
+     */
     public boolean isEmpty() {
         return numItems == 0;
     }
 
-    public int get(int index) {
-        return array[index];
+    /**
+     * Getter for a number at a specific index
+     *
+     * @param index the index at which to get the number from
+     * @return number at the index
+     */
+    public int get(int index) throws Exception {
+        if (numItems != 0) {
+            return array[index];
+        }
+        throw new Exception("Invalid Index"); //throw an exception if the index is invalid
     }
 
+    /**
+     * Prints the items in the list
+     */
     public void printList() {
         for (int x = 0; x < numItems; x++) {
             System.out.println(array[x]);
