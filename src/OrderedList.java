@@ -63,11 +63,19 @@ public class OrderedList {
             head.setNext(n);
             numItems++;
             }
-        }else if(index==numItems-1){            //if the number should go last in the list
+        }else if(index==numItems-1){//if the number should go last in the list
+            if(n.getNum()>current.getNum()){
             n.setPrev(current);
             n.setNext(null);
             current.setNext(n);
-            numItems++;
+            numItems++;}
+            else{
+             n.setPrev(current.getPrev());
+             n.setNext(current);
+             current.getPrev().setNext(n);
+             current.setPrev(n);
+             numItems++;
+            }
         }else{                                  //if the number should be in the middle of the list somewhere
            if(n.getNum()>current.getNum()){     //if the number is greater than the current number
             n.setPrev(current); 
