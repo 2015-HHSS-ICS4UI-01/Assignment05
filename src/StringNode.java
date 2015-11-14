@@ -4,7 +4,7 @@
  */
 
 /**
- *
+ * Altered Node class to implement characters instead of integers
  * @author vonhn0812
  */
 public class StringNode {
