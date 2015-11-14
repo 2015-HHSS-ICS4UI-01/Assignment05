@@ -16,8 +16,15 @@ public class Testing {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        OrderedList list = new OrderedList();
+        list.add(new Node(4));
+        list.add(new Node(2));
+        list.add(new Node(8));
+        list.add(new Node(1));
+        list.add(new Node(6));
+        list.add(new Node(5));
         
-        
+        list.printList();
                 
 
         
