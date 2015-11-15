@@ -97,6 +97,7 @@ public class OrderedLinkedList {
 
     public void remove(int num) {
         Node spot = first;
+        //searching for the thing to remove
         for(int i = 0; i < items; i++){
             if(num == spot.getNum()){
                 if(spot.getPrev() == null){
@@ -114,6 +115,8 @@ public class OrderedLinkedList {
             }
             spot = spot.getNext();
         }
+        
+        //take away one from total things
         items--;
     }
 

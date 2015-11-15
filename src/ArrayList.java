@@ -22,23 +22,17 @@ public class ArrayList {
 
     public void add(int index, int num) {
         stuff++;
-        System.out.println(stuff + "@@@");
         
+        //if they try to put something where they can not put something
         while (index > stuff) {
-            System.out.println("y u soi stoopid");
-            System.out.println("I onwy hov " + stuff + " pleces fo u");
             System.out.println("try again: ");
             index = in.nextInt();
         }
-        
-        System.out.println("^^");
-        
+
         //add a number at a spot that can be as big as there are things in the array or as small as 0
         int place = stuff;
-        System.out.println(place + "####");
-        System.out.println(array.length + "$$$");
-        System.out.println(array[9] + "&&&");
         
+        //if my things in the array get to 10, double the array size
         if(stuff == array.length-1){
             int[] arraw = new int[array.length*2];
             for(int i = 0; i < array.length; i++){
@@ -46,22 +40,26 @@ public class ArrayList {
             }
             array = arraw;
         }
+        
+        //shuffle all the numbers down
         for (int i = stuff; i >= index; i--) {
             array[place + 1] = array[place];
             place--;
-            System.out.println(i + "!!!!!");
         }
-        System.out.println("$$$");
-        System.out.println(array[index] + "===");
-        array[index] = num;
-        System.out.println("---" + array[index]);
-        //if my things in the array get to 10, double the array size
         
-
+        //put the number in the array
+        array[index] = num;
     }
 
     public void remove(int index) {
+        int place = index;
         //remove the number at the index spot
+        for (int i = index; i <= stuff; i++) {
+            array[place] = array[place + 1];
+            place++;
+        }
+        //take one away from total ammount of things
+        stuff--;
     }
 
     public Boolean isEmpty() {
