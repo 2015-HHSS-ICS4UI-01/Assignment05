@@ -15,5 +15,10 @@ public class Testing {
      */
     public static void main(String[] args) {
         MyLinkedList list = new MyLinkedList();
+        MyArrayList array = new MyArrayList();
+        list.add(3);
+        list.add(5);
+        array.get(0);
+        
     }
 }

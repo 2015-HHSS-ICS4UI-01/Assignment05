@@ -46,6 +46,7 @@ public class MyLinkedList {
     }
 
     public void remove(int num) {
+        //determines index of num to remove
         Node node = head;
         int index = 0;
         for (int i = 0; i < numitems; i++) {
@@ -55,25 +56,30 @@ public class MyLinkedList {
             index++;
             node = node.getNext();
         }
-        if (index != numitems) {
-            if (numitems == 1) {
-                head = null;
-            } else if (index == 0) {
-                head = head.getNext();
-            } else if (index == numitems - 1) {
+        if (index != numitems) { //only goes to remove an item if the item exists in the array
+            if (numitems == 1) { //deletes the list if the only item is being deleted
+                head = null; 
+            } else if (index == 0) { //sets the first item to be the second if the first if being removed
+                head = head.getNext(); 
+            } else if (index == numitems - 1) { //sets the second last item to point to null instead of last item
                 node = head;
                 for (int i = 0; i < index - 1; i++) {
                     node = node.getNext();
                 }
                 node.setNext(null);
-            } else {
+            } else { 
+                /**
+                 * sets the node before the node to be removed to 
+                 * point to the node after the node to be removed
+                 * instead of to the node to be removed
+                 */
                 node = head;
                 for (int i = 0; i < index - 1; i++) {
                     node = node.getNext();
                 }
                 node.setNext(node.getNext().getNext());
             }
-            numitems--;
+            numitems--; //decreases number of numbers since a number was taken out of the list
         }
     }
 
