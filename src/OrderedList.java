@@ -149,11 +149,15 @@ public class OrderedList {
     public void getInt(int x) {
         int counter = 0;
         Node n = head;
+        
+            
+        
         do {
             n = n.getNext();
             counter++;
         } while (counter != x);
         System.out.println(n.getNum());
+        
     }
 
     /**

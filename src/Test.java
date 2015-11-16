@@ -17,9 +17,23 @@ public class Test {
         // TODO code application logic here
         
         OrderedList list = new OrderedList();
-        list.add(new Node(5));
-        list.add(new Node(4));
-        list.getInt(1);
+        list.add(new Node(10));
+        list.add(new Node(100));
+        list.add(new Node(50));
+        list.add(new Node(70));
+        list.add(new Node(60));
+        list.add(new Node(700));
+        list.add(new Node(20));
+        list.add(new Node(1));  
+        list.printList();
+        System.out.println("");
+        list.remove(1);
+        System.out.println("");
+        list.printList();
+        
+        //arraylist
+        
+
     }
     
 }

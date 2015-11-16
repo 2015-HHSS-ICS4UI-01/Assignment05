@@ -63,5 +63,11 @@ public class Node {
     public boolean hasNext(){
         return next != null;
     }
-    
+    /**
+     * Check if this node has another node is pointing at it
+     * @return  if the node has another node behind it
+     */
+    public boolean hasPrev(){
+        return prev != null;
+    }
 }
