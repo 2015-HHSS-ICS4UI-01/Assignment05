@@ -26,20 +26,20 @@ public class Test {
         list.remove(4);
         list.printList();
         System.out.println("");
-//        
+//     
         //ArrayList
-//        ArrayList list = new ArrayList();
-//        list.add(3,0);
-//        list.add(2,1);
-//        list.add(1,2);
-//        list.add(7,3);
-//        list.add(9,4);
-//        list.remove(2);
-//        list.printList();
-//        System.out.println("");
+        ArrayList array = new ArrayList();
+        array.add(3,0);
+        array.add(2,1);
+        array.add(1,2);
+        array.add(7,3);
+        array.add(9,4);
+        list.remove(2);
+        list.printList();
+        System.out.println("");
         
         //stack
-        String word ="test$tset";
+        String word ="1at$ta1";
         System.out.println(isValid(word));
         
     }
