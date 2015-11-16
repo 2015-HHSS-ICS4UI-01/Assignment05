@@ -39,26 +39,28 @@ public class ADTList {
 //            if(arraySize[arraySize + 1] !=null){
 //                arraySize
 //            }
+            //no number just 
             for (int i = 0; i < arraySize.length; i++) {
                 if (arraySize[i] == null) {
                     arraySize[i] = num;
-                    break;
+
+                    // if array goes to far
                 } else if (i = arraySize[i]) {
 
+                    //make a temp array
+                    arraySize = new int[arraySize * 2];
+                    arrayTemp = new int[arrayTemp * 2];
+                    
+                    for (int i = 0; i < arraySize.length; i++) {
+                        arraySize[i] == arrayTemp[i];
+                    }
+                    
                     for (int i = 0; i < arraySize.length; i++) {
                         if (arraySize[i] == null) {
                             i++;
                         }
-                        arraySize[i] == arrayTemp[i];
+                        arrayTemp[i] == arraySize[i];
                     }
-                    arraySize = new int [arraySize * 2];
-                    or (int i = 0; i < arraySize.length; i++) {
-                        if (arraySize[i] == null) {
-                            i++;
-                        }
-                        arraySize[i] == arrayTemp[i];
-                    }
-
                 }
             }
             numItems++;
