@@ -9,16 +9,31 @@ package javaadt;
  * @author simma1980
  */
 public class MyArrayList {
-    
-    private Node head;
-    private int numarrays;
-    
+
+    private int[] nums;
+    private int numitems;
+
     public MyArrayList() {
-        head = null;
-        numarrays = 0;
+        nums = new int[10];
+        
     }
     
-    public void add(int index, int num) {
-        
+    public int size() {
+        return numitems;
+    }
+
+    public boolean isEmpty() {
+        if (numitems > 0) {
+            return false;
+        }
+        return true;
+    }
+    
+    public int get(int index) {
+        if (index < numitems && index >= 0) {
+          return nums[index];  
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
