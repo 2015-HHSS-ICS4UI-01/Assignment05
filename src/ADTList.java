@@ -45,7 +45,7 @@ public class ADTList {
                     arraySize[i] = num;
 
                     // if array goes to far
-                } else if (i = arraySize[i]) {
+                } else if (i == arraySize[i]) {
 
                     //make a temp array
                     arraySize = new int[arraySize * 2];
