@@ -39,15 +39,44 @@ public class Test {
 //        System.out.println("");
         
         //stack
-//        Stack stack = new Stack();
-//        stack.push(new CharNode('a'));
-//        stack.push(new CharNode('l'));
-//        stack.push(new CharNode('i'));
-//        stack.push(new CharNode('$'));
-//        stack.push(new CharNode('i'));
-//        stack.push(new CharNode('l'));
-//        stack.push(new CharNode('a'));
-//        System.out.println(stack.reverse(stack));
+        String word ="test$tset";
+        System.out.println(isValid(word));
+        
     }
+    
+    public static boolean isValid(String word)
+    {
+        Stack stack = new Stack();
+        int i = 0;
+        //push all of the charcters up to the $ to the stack
+        while (i < word.indexOf("$"))
+        {
+            stack.push(new CharNode(word.charAt(i)));
+            i++;
+        }
+        
+        //new empty string to hold the reversed word
+        String reverse = "";
+        
+        //get all the characters up to the $ in reverse
+        while (i > 0)
+        {
+            reverse += stack.pop();
+            i--;
+        }
+        
+        //make the second part as a string
+        String secondPart = word.substring(word.indexOf("$") +1, word.length() );
 
+        //check if theyre the same
+        if(reverse.equals(secondPart)){
+            //the reverse of the first part is equal to the second part
+            return true;
+        }else{
+            //the reverse of the first part is not equal to the second part
+            return false;
+        }
+        
+    }
+    
 }
