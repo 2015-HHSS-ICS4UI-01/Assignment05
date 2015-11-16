@@ -17,8 +17,8 @@ public class Testing {
         list.add(-1);
         list.add(8);
        list.remove(8);
-        System.out.println(list.get(3));
-        //list.printList();
+        
+        list.printList();
 
     }
 }
