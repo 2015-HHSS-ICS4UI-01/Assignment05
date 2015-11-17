@@ -14,6 +14,12 @@ public class A5Q3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        StringStack bob = new StringStack();
+        boolean temp = false;
+        temp = bob.word("cat$cac");
+        if(temp == false){
+            System.out.println("false");
+        }else
+        System.out.println("true");
     }
 }
