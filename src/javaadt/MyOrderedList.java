@@ -8,12 +8,12 @@ package javaadt;
  *
  * @author simma1980
  */
-public class MyLinkedList {
+public class MyOrderedList {
 
     private Node head;
     private int numitems = 0;
 
-    public MyLinkedList() {
+    public MyOrderedList() {
         head = null;
         numitems = 0;
     }

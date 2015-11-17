@@ -14,7 +14,7 @@ public class Testing {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MyLinkedList list = new MyLinkedList();
+        MyOrderedList list = new MyOrderedList();
         MyArrayList array = new MyArrayList();
         MyStringStack string = new MyStringStack();
     }
