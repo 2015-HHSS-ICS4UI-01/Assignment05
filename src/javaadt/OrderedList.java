@@ -28,11 +28,32 @@ public class OrderedList {
      * @param n the node to add
      */
     public void add(int num) {
-        Node n = new Node(num);
-        n.setNext(head);
-        head = n;
-        numItems++;
+        Node n = new Node(num), next = head, tail = head; 
+        int counter = 0;
+        if (numItems == 0 || n.getNum() < head.getNum()) {
+            n.setNext(head);
+            head = n;
+            numItems++;
+        } else {
+            while (num > next.getNum()) {
+                n = n.getNext();
+                next = next.getNext();
+                counter++;
+                if (next.hasNext() == false) {
+                    n.setNext(n);
+                    numItems++;
+                }
+            }      
+//        if (num < next.getNum()) {
+//            n = n.getPrev();
+//            n.setNext(n);
+//            numItems++;
+//        }
+
+        }
     }
+
+    
 
     public void remove(int num) {
         Node current = head;
@@ -44,29 +65,28 @@ public class OrderedList {
             index++;
             current = current.getNext();
         }
-
-            if (index == 0) {
-                head = head.getNext();
-                // deleting end item
-            } else if (index == numItems - 1) {
-                // go to the second last node
-                Node n = head;
-                for (int i = 0; i < index - 1; i++) {
-                    n = n.getNext();
-                }
-                // make it point nowhere
-                n.setNext(null);
-                // remove from the middle
-            } else {
-                Node n = head;
-                for (int i = 0; i < index - 1; i++) {
-                    n = n.getNext();
-                }
-                // ask the node for its next next node
-                n.setNext(n.getNext().getNext());
+        if (index == 0) {
+            head = head.getNext();
+            // deleting end item
+        } else if (index == numItems - 1) {
+            // go to the second last node
+            Node n = head;
+            for (int i = 0; i < index - 1; i++) {
+                n = n.getNext();
             }
-            numItems--;
+            // make it point nowhere
+            n.setNext(null);
+            // remove from the middle
+        } else {
+            Node n = head;
+            for (int i = 0; i < index - 1; i++) {
+                n = n.getNext();
+            }
+            // ask the node for its next next node
+            n.setNext(n.getNext().getNext());
         }
+        numItems--;
+    }
 
     public int size() {
         return numItems;

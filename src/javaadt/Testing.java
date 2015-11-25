@@ -19,7 +19,7 @@ public class Testing {
         list.add(10);
         list.add(5);
         list.add(2);
-        list.remove(10);
+      //  list.remove(4);
        // System.out.println(list.get(0));
         list.printList();
     }
