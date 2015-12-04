@@ -32,7 +32,7 @@ public class MyOrderedList {
             int index = 1;
             Node prev = head, next = head.getNext();
             for (int i = 0; i < numitems; i++) {
-                if (prev.getNum() < node.getNum() && node.getNum() < next.getNum()) {
+                if (prev.getNum() <= node.getNum() && node.getNum() <= next.getNum()) {
                     break;
                 }
                 index++;
@@ -58,20 +58,20 @@ public class MyOrderedList {
         }
         if (index != numitems) { //only goes to remove an item if the item exists in the array
             if (numitems == 1) { //deletes the list if the only item is being deleted
-                head = null; 
+                head = null;
             } else if (index == 0) { //sets the first item to be the second if the first if being removed
-                head = head.getNext(); 
+                head = head.getNext();
             } else if (index == numitems - 1) { //sets the second last item to point to null instead of last item
                 node = head;
                 for (int i = 0; i < index - 1; i++) {
                     node = node.getNext();
                 }
                 node.setNext(null);
-            } else { 
+            } else {
                 /**
-                 * sets the node before the node to be removed to 
-                 * point to the node after the node to be removed
-                 * instead of to the node to be removed
+                 * sets the node before the node to be removed to point to the
+                 * node after the node to be removed instead of to the node to
+                 * be removed
                  */
                 node = head;
                 for (int i = 0; i < index - 1; i++) {
