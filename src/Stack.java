@@ -1,7 +1,7 @@
 
 /**
  *
- * @author alimu
+ * @author rayan4858
  */
 public class Stack {
 

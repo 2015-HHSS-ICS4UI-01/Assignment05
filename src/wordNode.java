@@ -5,7 +5,7 @@
 
 /**
  *
- * @author vonhn0812
+ * @author rayan
  */
 public class wordNode {
   private char num;
