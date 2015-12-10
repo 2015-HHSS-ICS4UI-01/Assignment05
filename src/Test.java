@@ -17,16 +17,17 @@ public class Test {
         // TODO code application logic here
 
         //ordered list
-//        OrderedList list = new OrderedList();
-//        list.add(new Node(8));
-//        list.add(new Node(7));
-//        list.add(new Node(6));
-//        list.add(new Node(4));
-//        list.add(new Node(2));
-//        list.add(new Node(1));
-//        list.printList();
-//        System.out.println("");
-//        list.getInt(2);
+        OrderedList list = new OrderedList();
+        list.add(new Node(8));
+        list.add(new Node(7));
+        list.add(new Node(6));
+        list.add(new Node(4));
+        list.add(new Node(2));
+        list.add(new Node(1));
+        list.add(new Node(9));
+        list.printList();
+        System.out.println("");
+        list.getInt(2);
         
         //array list
 //        arrayList array = new arrayList();  
