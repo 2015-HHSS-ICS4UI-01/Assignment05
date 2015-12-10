@@ -20,7 +20,7 @@ public class isValidWord {
             stack.push(new wordNode(word.charAt(i)));
             i++;
         }                                           
-        String before$ = "";    //creats an empty string to store the word until $ backwards
+        String before$ = "";    //creats an empty string to store the word until $ 
                                                             
         while (i > 0) {     //gets the word from $ until word ends and puts it in reverese and then stores it in before$
             before$ += stack.pop();
