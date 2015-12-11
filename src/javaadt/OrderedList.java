@@ -28,32 +28,33 @@ public class OrderedList {
      * @param n the node to add
      */
     public void add(int num) {
-        Node n = new Node(num), next = head, tail = head; 
-        int counter = 0;
+        Node n = new Node(num);
+        int counter = 1;
         if (numItems == 0 || n.getNum() < head.getNum()) {
             n.setNext(head);
             head = n;
-            numItems++;
         } else {
-            while (num > next.getNum()) {
-                n = n.getNext();
-                next = next.getNext();
-                counter++;
-                if (next.hasNext() == false) {
-                    n.setNext(n);
-                    numItems++;
+            Node next = head.getNext(), previ = head;
+            while (counter < numItems) {
+                if (next == null || num < next.getNum() && num > previ.getNum()) {
+                    break;
                 }
-            }      
-//        if (num < next.getNum()) {
-//            n = n.getPrev();
-//            n.setNext(n);
-//            numItems++;
-//        }
-
+                counter++;
+                next = next.getNext();
+                previ = previ.getNext();
+            }
+            if (counter == numItems) {
+                previ.setNext(n);
+                n.setPrev(previ);
+            } else {
+                n.setNext(next);
+                next.setPrev(n);
+                previ.setNext(n);
+                n.setPrev(previ);
+            }
         }
+        numItems++;
     }
-
-    
 
     public void remove(int num) {
         Node current = head;
