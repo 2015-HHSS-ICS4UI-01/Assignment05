@@ -20,7 +20,10 @@ public class OrderedList {
     
     
 
-    
+    /**
+     * add a number to the list
+     * @param n the number
+     */
     public void add(Node n) {
         if (numItems == 0) {
             n.setNext(head);
@@ -40,7 +43,7 @@ public class OrderedList {
                 
 
             }
-            //set the node i'm adding's next node
+            //set the adding node's next node
             
             if(current.getNext()==null&&current.getNum() < n.getNum()){
                 
@@ -75,12 +78,17 @@ public class OrderedList {
                 
             }
 
-            //add
+            
             
         }
+        //1 more item in list
         numItems++;
     }
 
+    /**
+     * Take a number away from the list
+     * @param num the number
+     */
     public void remove(int num) {
         Node current = head;
         for(int i = 0; i < numItems-1; i++){
@@ -122,14 +130,22 @@ public class OrderedList {
             }
         
         
-        
+        //since I removed a number, the total number of items -1
         numItems--;
     }
 
+    /**
+     * the size of the list
+     * @return the number of items on the list
+     */
     public int size() {
         return numItems;
     }
 
+    /**
+     * if there are 0 items in the list
+     * @return if the list is empty
+     */
     public boolean isEmpty() {
         if(size() == 0){
             return true;
@@ -139,6 +155,11 @@ public class OrderedList {
         }
     }
 
+    /**
+     * Get the number at the position in the index
+     * @param index the position
+     * @return the number at the position
+     */
     public int get(int index) {
         Node n = head;
         for(int i = 0; i < index; i++){
@@ -146,6 +167,10 @@ public class OrderedList {
         }
         return n.getNum();
     }
+    
+    /**
+     * print everything out
+     */
     public void printList(){
         Node n = head;
         while(n != null){
