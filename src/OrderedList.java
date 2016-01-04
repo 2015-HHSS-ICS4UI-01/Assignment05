@@ -25,17 +25,18 @@ public class OrderedList {
      * @param n the number
      */
     public void add(Node n) {
+        //if there are no items
         if (numItems == 0) {
+            //set the first position to be the head
             n.setNext(head);
             head = n;
             n.getPrev();
-                 
-            System.out.println("first");
+
         } else {
             Node current = head;
-
+            //go through the list
             for (int i = 0; i < numItems-1; i++) {
-                
+                //if the number is bigger than the node, break out of the loop
                 if(current.getNum()>n.getNum()){
                     break;
                 }
@@ -45,24 +46,26 @@ public class OrderedList {
             }
             //set the adding node's next node
             
+            //if it is at the end
             if(current.getNext()==null&&current.getNum() < n.getNum()){
                 
                 n.setPrev(current);
                 n.setNext(null);
                 current.setNext(n);
-                System.out.println("end");
+
                 
             }
+            //if it is the at the beginning
             else if(current.getPrev()==null){
                 
                 n.setNext(current);
                 n.setPrev(null);
                 current.setPrev(n);
                 head = n;
-                System.out.println("start");
                 
                 
             }
+            //if it is in the middle
             else{
                 
                 n.setPrev(current.getPrev());
@@ -70,11 +73,6 @@ public class OrderedList {
                 n.setNext(current);
                 current.setPrev(n);
                 System.out.println("mid");
-                
-                
-                
-                
-                
                 
             }
 
@@ -91,42 +89,39 @@ public class OrderedList {
      */
     public void remove(int num) {
         Node current = head;
+        //go through the list
         for(int i = 0; i < numItems-1; i++){
-            
+            //if it matches the number to be taken out, break
             if(current.getNum()==num){
                 break;
             }
             current=current.getNext();
         }
         
-        
+        //if it is at the end
         if(current.getNext()==null){
                 
                 current.getPrev().setNext(null);
                 
                 
             }
+        //if it is at the start
             else if(current.getPrev()==null){
                 
                 current.getNext().setPrev(null);
                 
                 head = current.getNext();
-                System.out.println("start");
+
                 
                 
             }
+            //if it is in the middle
             else{
                 
                 current.getPrev().setNext(current.getNext());
                 current.getNext().setPrev(current.getPrev());
                 
-                System.out.println("mid");
-                
-                
-                
-                
-                
-                
+            
             }
         
         
