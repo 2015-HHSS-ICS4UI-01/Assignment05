@@ -8,12 +8,8 @@
  *
  * @author rainy
  */
-public class test {
-    public static void main(String[] args) {
-        A5Q1 list = new A5Q1();
-        list.add(5);
-        list.add(3);
-        list.add(10);
-        list.printList();
-    }
+public class Stack {
+    private NodeChar head;
+    private int numItems;
+    
 }

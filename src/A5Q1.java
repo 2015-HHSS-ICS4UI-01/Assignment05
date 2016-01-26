@@ -8,12 +8,12 @@
  *
  * @author rainy
  */
-public class OrderedList {
+public class A5Q1 {
     private Node head;
     private int numItems = 0;
     private boolean empty;
     
-    public OrderedList(){
+    public A5Q1(){
         head = null;
         empty = false;
         numItems = 0;

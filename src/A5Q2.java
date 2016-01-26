@@ -8,7 +8,7 @@
  *
  * @author rainy
  */
-public class ArrayList {
+public class A5Q2 {
     private int[] arrayList = new int[10];  
     private int numItems;
     private boolean empty;

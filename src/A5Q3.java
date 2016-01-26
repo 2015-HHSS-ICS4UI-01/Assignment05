@@ -8,12 +8,11 @@
  *
  * @author rainy
  */
-public class test {
-    public static void main(String[] args) {
-        A5Q1 list = new A5Q1();
-        list.add(5);
-        list.add(3);
-        list.add(10);
-        list.printList();
+public class A5Q3 {
+    public static void main(String[] args){
+        StringStack this = new StringStack();
+        boolean temp = false;
+        temp = this.word("cat$cac");
+                
     }
 }
