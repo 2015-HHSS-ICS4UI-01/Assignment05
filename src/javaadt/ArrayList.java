@@ -10,53 +10,86 @@ package javaadt;
  */
 public class ArrayList {
     
-private Node head;
+    private int[] List;
+    private int[] temp;
     private int numItems;
-    private boolean isEmpty;
-    
+
     public ArrayList() {
-        head = null;
+        List = new int[10];
         numItems = 0;
     }
-
+    
+    
     /**
-     * Add the node to the beginning of the list
-     *
-     * @param n the node to add
+     * remove a integer from the array
+     * @param i the spot in the array
      */
-    public void add(int num) {
-       
+      public void remove(int i) {
+        for (int j = i; j < numItems - 1; j++) {
+            List[j] = List[j + 1];
+        }
+        numItems--;
     }
+      
+      
+      /**
+       * add a integer to the array
+       * @param i spot in the array 
+       * @param num integer
+       */
+    public void add(int i, int num) {
+        numItems++;
+         if (numItems > List.length) {
+            temp = new int[2 * (List.length)];
+            for (int j = 0; j > numItems; j++) {
+                List[j] = temp[j];
+                List[i] = num; 
+            }
 
-    public void remove(int num) {
-        
+
+        } else if (i == 0) {
+            for (int j = numItems; j >= 1; j--) {
+                List[j] = List[j + 1];
+            }
+            List[i] = num;
+
+
+
+        }else if(i > 0 && i < numItems ){
+            for (int j = i; j <= numItems; j++) {
+                List[i] = List[j + 1];
+            }
+            List[i] = num;
+        }
+
     }
-
-    public int size() {
-        return numItems;
-    }
-
+    
+    
+    /**
+     * Check if the array is empty
+     * @return if array is empty
+     */
     public boolean isEmpty() {
-        if (numItems == 0) {
-            return isEmpty;
-        } else {
+        if (numItems > 0) {
             return false;
-        }
+        }else{
+        return true;
     }
-
-    public int get(int index) {
-        Node n = head;
-        for (int i = 0; i < index; i++) {
-            n = n.getNext();
-        }
-        return n.getNum();
     }
-
-    public void printList() {
-        Node n = head;
-        while (n != null) {
-            System.out.println(n.getNum());
-            n = n.getNext();
+    
+    
+    
+    /**
+     * Get the integer at spot "i"
+     * @param i location within the array holding the integer
+     * @return the integer
+     */
+    public int get(int i) {
+        if (i >= numItems || i < 0) {
+            throw new IndexOutOfBoundsException("null");
+        }else{
+            return List[i];
         }
     }
 }
+
